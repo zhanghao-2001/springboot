@@ -11,7 +11,7 @@ Collection coll=(Collection)request.getAttribute("book");
 <link href="CSS/style.css" rel="stylesheet">
 </head>
 <body onLoad="clockon(bgclock)">
-<%@include file="banner.jsp"%>
+<%@include file="banner.html"%>
 <%@include file="navigation.jsp"%>
 <table width="778"  border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
@@ -33,7 +33,7 @@ if(coll==null || coll.isEmpty()){
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>
-      <a href="book_add.jsp">添加图书信息</a> </td>
+      <a href="book_add.html">添加图书信息</a> </td>
   </tr>
 </table>
  <%
@@ -52,7 +52,7 @@ if(coll==null || coll.isEmpty()){
   <tr>
     <td width="87%">&nbsp;      </td>
 <td width="13%">
-      <a href="book_add.jsp">添加图书信息</a></td>	  
+      <a href="book_add.html">添加图书信息</a></td>
   </tr>
 </table>  
   <table width="98%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#F6B83B" bordercolorlight="#FFFFFF">

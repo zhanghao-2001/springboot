@@ -13,7 +13,7 @@
 <link href="CSS/style.css" rel="stylesheet">
 </head>
 <body onLoad="clockon(bgclock)">
-<%@include file="banner.jsp"%> 
+<%@include file="banner.html"%>
 <%@include file="navigation.jsp"%>
 <%
 BorrowDAO borrowDAO=new BorrowDAO();

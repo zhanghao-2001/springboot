@@ -33,7 +33,7 @@ function check(myform){
 </script>
 </head>
 <body onLoad="clockon(bgclock)">
-<%@include file="banner.jsp"%>
+<%@include file="banner.html"%>
 <%@include file="navigation.jsp"%>
 <table width="778"  border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>

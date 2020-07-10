@@ -27,11 +27,11 @@
             <TH colSpan=2 height=24>【新增商品种类】</TH>
         </TR>
         <TR>
-            <TD class=forumrow width="30%" height=24>
+            <TD class="forumrow" width="30%" height=24>
                 <div align="right">商品种类名称：</div>
             </TD>
             <TD class=forumrowhighlight width="70%"
-                height=24><input type="text" name="commodityClassName"></TD>
+                height=24><input type="text" name="commodityClassName" id="commodityClassName"></TD>
         </TR>
         <TR>
             <TD class=forumrow height=24>
@@ -39,7 +39,7 @@
             </TD>
             <TD class=forumrowhighlight
                 height=24><span class="forumrow">
-      <input type="submit" value="提交">
+      <input type="button" value="提交" id="inputsubmit">
       <input type="reset" value="重置">
     </span></TD>
         </TR>
@@ -52,4 +52,21 @@
 </TABLE>
 <BR>
 </BODY>
+<script src="../js/jquery-3.4.1.min.js">
+
+</script>
+<script>
+    $("#inputsubmit").click(function () {
+        if ($("#commodityClassName").val() != "") {
+            $.post("addCommodityClass", {
+                "commodityClassName": $("#commodityClassName").val()
+            }, function (data) {
+                console.log(data);
+                alert(data);
+            })
+        } else {
+            alert("商品种类名称不能为空");
+        }
+    })
+</script>
 </html>

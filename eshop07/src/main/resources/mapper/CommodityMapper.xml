@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.psfd.springboot.eshop.dao.CommodityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.psfd.springboot.eshop.domain.Commodity">
+        <id column="commodity_id" property="commodity_id" />
+        <result column="commodity_class" property="commodity_class" />
+        <result column="commodiy_name" property="commodiy_name" />
+        <result column="manufacturer" property="manufacturer" />
+        <result column="commdity_price" property="commdity_price" />
+        <result column="fc_price" property="fc_price" />
+        <result column="commodity_amount" property="commodity_amount" />
+        <result column="commodity_leave_num" property="commodity_leave_num" />
+        <result column="reg_time" property="reg_time" />
+        <result column="image" property="image" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.psfd.springboot.eshop.dao.OrderformMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.psfd.springboot.eshop.domain.Orderform">
+        <id column="order_form_id" property="order_form_id" />
+        <result column="user_id" property="user_id" />
+        <result column="order_from_no" property="order_from_no" />
+        <result column="submit_time" property="submit_time" />
+        <result column="consignment_time" property="consignment_time" />
+        <result column="total_price" property="total_price" />
+        <result column="remark" property="remark" />
+        <result column="idaddress" property="idaddress" />
+        <result column="is_payoff" property="is_payoff" />
+        <result column="isConsignment" property="isConsignment" />
+    </resultMap>
+
+</mapper>

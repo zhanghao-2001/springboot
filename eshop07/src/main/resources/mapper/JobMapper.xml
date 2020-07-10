@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.psfd.springboot.eshop.dao.JobMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.psfd.springboot.eshop.domain.Job">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="age" property="age" />
+        <result column="job" property="job" />
+        <result column="specialty" property="specialty" />
+        <result column="experience" property="experience" />
+        <result column="studyeffort" property="studyeffort" />
+        <result column="school" property="school" />
+        <result column="tel" property="tel" />
+        <result column="email" property="email" />
+        <result column="createtime" property="createtime" />
+        <result column="content" property="content" />
+        <result column="isstock" property="isstock" />
+    </resultMap>
+
+</mapper>

@@ -1,23 +1,4 @@
-a {
-    text-decoration: none;
-}
-
-A:link {
-    color: #2f2f2f;
-    text-decoration: none;
-}
-
-A:visited {
-    color: #2f2f2f;
-    text-decoration: none;
-}
-
-A:hover {
-    color: #FF6600;
-    text-decoration: none;
-}
-
-BODY {
+﻿BODY {
     SCROLLBAR-FACE-COLOR: #3A6592;
     SCROLLBAR-HIGHLIGHT-COLOR: #3A6592;
     SCROLLBAR-SHADOW-COLOR: #3A6592;
@@ -35,17 +16,32 @@ BODY, td, div, table {
     margin: 0
 }
 
-td {
-    font-family: "宋体";
-    font-size: 9pt;
-    line-height: 150%;
+A:link {
+    color: #2f2f2f;
+    text-decoration: none;
+}
+
+A:visited {
+    color: #2f2f2f;
+    text-decoration: none;
+}
+
+A:hover {
+    color: #FF6600;
+    text-decoration: none;
 }
 
 td {
     font-family: "宋体";
     font-size: 12px;
-    color: #333333;
+    color: #2f2f2f;
     line-height: 16px;
+}
+
+/* 后台管理导航-------------------------------------- */
+td.SystemLeft {
+    COLOR: #ffffff;
+    POSITION: relative
 }
 
 td.SystemLeft A:link {
@@ -63,24 +59,6 @@ td.SystemLeft A:hover {
     text-decoration: none;
 }
 
-.tableborder {
-    background-color: #6ab6b6
-}
-
-td.title {
-    background-color: #86C4C4;
-    color: #FFFFFF;
-    font-weight: bold;
-}
-
-td.forumrow {
-    background-color: #eafefe
-}
-
-td.forumrowhighlight {
-    background-color: #E0FEFE
-}
-
 textarea.ConstSet {
     background-color: #F8FAFC;
     border: 1px solid #6FBFBF;
@@ -94,12 +72,6 @@ textarea.ConstSet {
     scrollbar-highlight-color: #DAE4EF;
     scrollbar-shadow-color: #DAE4EF;
     scrollbar-track-color: #F8FAFC;
-}
-
-input {
-    font-size: 12px;
-    height: 20px;
-    color: #333333;
 }
 
 .button {
@@ -123,19 +95,7 @@ input {
     color: #2f2f2f;
 }
 
-th {
-    font-weight: bold;
-    font-size: 12px;
-    background-image: url(../img/Explain.gif);
-    color: white;
-    background-color: #6ab6b6;
-    background-repeat: no-repeat;
-    background-position: 5px center;
-    text-align: left;
-    padding-left: 25px;
-}
-
-
+/* 后台管理类别树-------------------------------------- */
 .SortFolderOpen {
     background-image: url(../img/Sort_Folder_Close.gif);
     background-repeat: no-repeat;
@@ -155,7 +115,7 @@ th {
 }
 
 .SortEndFolderOpen {
-    background-image: url(img/SortEnd_Folder_Close.gif);
+    background-image: url(../img/SortEnd_Folder_Close.gif);
     background-repeat: no-repeat;
     height: 16px;
     left: 16px;

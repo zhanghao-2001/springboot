@@ -2,11 +2,12 @@ package com.psfd.springboot.eshop.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author admin
@@ -17,13 +18,13 @@ public class Orderlist implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "order_list_id", type = IdType.AUTO)
-    private Integer orderListId;
+    private Integer orderListId;        //订单列表编号
 
-    private Integer commodityId;
+    private Commodity commodity;        //商品信息
 
-    private Integer orderFormId;
+    private Orderform orderForm;        //订单信息
 
-    private Integer amount;
+    private Integer amount;             //商品数量
 
     public Integer getOrderListId() {
         return orderListId;
@@ -32,20 +33,8 @@ public class Orderlist implements Serializable {
     public void setOrderListId(Integer orderListId) {
         this.orderListId = orderListId;
     }
-    public Integer getCommodityId() {
-        return commodityId;
-    }
 
-    public void setCommodityId(Integer commodityId) {
-        this.commodityId = commodityId;
-    }
-    public Integer getOrderFormId() {
-        return orderFormId;
-    }
 
-    public void setOrderFormId(Integer orderFormId) {
-        this.orderFormId = orderFormId;
-    }
     public Integer getAmount() {
         return amount;
     }
@@ -54,13 +43,20 @@ public class Orderlist implements Serializable {
         this.amount = amount;
     }
 
-    @Override
-    public String toString() {
-        return "Orderlist{" +
-        "orderListId=" + orderListId +
-        ", commodityId=" + commodityId +
-        ", orderFormId=" + orderFormId +
-        ", amount=" + amount +
-        "}";
+
+    public Commodity getCommodity() {
+        return commodity;
+    }
+
+    public void setCommodity(Commodity commodity) {
+        this.commodity = commodity;
+    }
+
+    public Orderform getOrderForm() {
+        return orderForm;
+    }
+
+    public void setOrderForm(Orderform orderForm) {
+        this.orderForm = orderForm;
     }
 }

@@ -1,11 +1,11 @@
 package com.psfd.springboot.eshop.dao;
 
-import com.psfd.springboot.eshop.domain.Commodity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.psfd.springboot.eshop.domain.Commodity;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author admin

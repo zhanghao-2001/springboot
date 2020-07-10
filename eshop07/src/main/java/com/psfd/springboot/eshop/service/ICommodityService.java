@@ -1,7 +1,7 @@
 package com.psfd.springboot.eshop.service;
 
-import com.psfd.springboot.eshop.domain.Commodity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.psfd.springboot.eshop.domain.Commodity;
 
 /**
  * <p>

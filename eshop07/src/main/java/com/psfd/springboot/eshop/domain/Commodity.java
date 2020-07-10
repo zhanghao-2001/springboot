@@ -2,13 +2,14 @@ package com.psfd.springboot.eshop.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
+
 import java.sql.Blob;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ * 商品信息表
  * </p>
  *
  * @author admin
@@ -19,25 +20,39 @@ public class Commodity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "commodity_id", type = IdType.AUTO)
-    private Integer commodityId;
+    private Integer commodityId;                //商品编号
 
-    private Integer commodityClass;
+    private Commodityclass commodityClass;     //商品种类
 
-    private String commodiyName;
+    private String commodiyName;               //商品名称
 
-    private String manufacturer;
+    private String manufacturer;               //生产厂家
 
-    private Double commdityPrice;
+    private String commodityDepict;               //商品描述
 
-    private Double fcPrice;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-    private Integer commodityAmount;
+    public String getCommodityDepict() {
+        return commodityDepict;
+    }
 
-    private Integer commodityLeaveNum;
+    public void setCommodityDepict(String commodityDepict) {
+        this.commodityDepict = commodityDepict;
+    }
 
-    private LocalDateTime regTime;
+    private Double commdityPrice;           //商品价格
 
-    private Blob image;
+    private Double fcPrice;                 //帆城网价格
+
+    private Integer commodityAmount;        //商品总数量
+
+    private Integer commodityLeaveNum;      //商品剩余数量
+
+    private Date regTime;   //商品上架时间
+
+    private Blob image;     //商品图片
 
     public Integer getCommodityId() {
         return commodityId;
@@ -46,13 +61,15 @@ public class Commodity implements Serializable {
     public void setCommodityId(Integer commodityId) {
         this.commodityId = commodityId;
     }
-    public Integer getCommodityClass() {
+
+    public Commodityclass getCommodityClass() {
         return commodityClass;
     }
 
-    public void setCommodityClass(Integer commodityClass) {
+    public void setCommodityClass(Commodityclass commodityClass) {
         this.commodityClass = commodityClass;
     }
+
     public String getCommodiyName() {
         return commodiyName;
     }
@@ -60,6 +77,7 @@ public class Commodity implements Serializable {
     public void setCommodiyName(String commodiyName) {
         this.commodiyName = commodiyName;
     }
+
     public String getManufacturer() {
         return manufacturer;
     }
@@ -67,6 +85,7 @@ public class Commodity implements Serializable {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
+
     public Double getCommdityPrice() {
         return commdityPrice;
     }
@@ -74,6 +93,7 @@ public class Commodity implements Serializable {
     public void setCommdityPrice(Double commdityPrice) {
         this.commdityPrice = commdityPrice;
     }
+
     public Double getFcPrice() {
         return fcPrice;
     }
@@ -81,6 +101,7 @@ public class Commodity implements Serializable {
     public void setFcPrice(Double fcPrice) {
         this.fcPrice = fcPrice;
     }
+
     public Integer getCommodityAmount() {
         return commodityAmount;
     }
@@ -88,6 +109,7 @@ public class Commodity implements Serializable {
     public void setCommodityAmount(Integer commodityAmount) {
         this.commodityAmount = commodityAmount;
     }
+
     public Integer getCommodityLeaveNum() {
         return commodityLeaveNum;
     }
@@ -95,13 +117,15 @@ public class Commodity implements Serializable {
     public void setCommodityLeaveNum(Integer commodityLeaveNum) {
         this.commodityLeaveNum = commodityLeaveNum;
     }
-    public LocalDateTime getRegTime() {
+
+    public Date getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(LocalDateTime regTime) {
+    public void setRegTime(Date regTime) {
         this.regTime = regTime;
     }
+
     public Blob getImage() {
         return image;
     }
@@ -113,16 +137,17 @@ public class Commodity implements Serializable {
     @Override
     public String toString() {
         return "Commodity{" +
-        "commodityId=" + commodityId +
-        ", commodityClass=" + commodityClass +
-        ", commodiyName=" + commodiyName +
-        ", manufacturer=" + manufacturer +
-        ", commdityPrice=" + commdityPrice +
-        ", fcPrice=" + fcPrice +
-        ", commodityAmount=" + commodityAmount +
-        ", commodityLeaveNum=" + commodityLeaveNum +
-        ", regTime=" + regTime +
-        ", image=" + image +
-        "}";
+                "commodityId=" + commodityId +
+                ", commodityClass=" + commodityClass +
+                ", commodiyName='" + commodiyName + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", commodityDepict='" + commodityDepict + '\'' +
+                ", commdityPrice=" + commdityPrice +
+                ", fcPrice=" + fcPrice +
+                ", commodityAmount=" + commodityAmount +
+                ", commodityLeaveNum=" + commodityLeaveNum +
+                ", regTime=" + regTime +
+                ", image=" + image +
+                '}';
     }
 }

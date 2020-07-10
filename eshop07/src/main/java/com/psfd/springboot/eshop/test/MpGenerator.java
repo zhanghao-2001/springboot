@@ -34,7 +34,7 @@ public class MpGenerator {
 
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
-        strategyConfig.setInclude(new String[]{"admin", "commodity", "commodityclass", "institution", "orderlist", "stipend", "user"});
+        strategyConfig.setInclude(new String[]{"admin", "commodity", "commodityclass", "institution", "orderlist", "user", "orderform"});
         generator.setStrategy(strategyConfig);
 
         PackageConfig packageConfig = new PackageConfig();

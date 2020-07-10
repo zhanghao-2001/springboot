@@ -1,6 +1,6 @@
 package com.psfd.springboot.eshop.dao;
 
-import com.psfd.springboot.eshop.domain.Institution;
+import com.psfd.springboot.eshop.domain.Orderform;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author admin
  * @since 2020-07-10
  */
-public interface InstitutionMapper extends BaseMapper<Institution> {
+public interface OrderformMapper extends BaseMapper<Orderform> {
 
 }

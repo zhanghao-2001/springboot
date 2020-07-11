@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * <p>
@@ -18,11 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 2020-07-10
  */
 @Controller
+@RequestMapping("/admin")
 public class CommodityclassController {
 
     @Autowired
     private ICommodityclassService commodityclassService;
-
     @RequestMapping("/addCommodityClass")
     @ResponseBody
     public String addCommodityClass(Commodityclass commodityclass) {
@@ -30,9 +31,17 @@ public class CommodityclassController {
         return "增加商品种类成功";
     }
 
+
+    @RequestMapping("/commodityClassAddTemp")
+    public String commodityClassAddTemp() {
+        return "commodityclass/commodityClassAdd";
+    }
+
+
     @RequestMapping("/queryAllCommodityClass")
-    public String queryAllCommodityClass() {
-        return "commodityClassList";
+    public ModelAndView queryAllCommodityClass(ModelAndView modelAndView) {
+        modelAndView.setViewName("commodityclass/commodityClassList");
+        return modelAndView;
     }
 
 

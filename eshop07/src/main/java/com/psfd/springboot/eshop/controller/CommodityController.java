@@ -4,6 +4,7 @@ package com.psfd.springboot.eshop.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * <p>
@@ -14,7 +15,19 @@ import org.springframework.stereotype.Controller;
  * @since 2020-07-10
  */
 @Controller
-@RequestMapping("/commodity")
+@RequestMapping("/admin")
 public class CommodityController {
 
+    @RequestMapping("/commodityAddTemp")
+    public String commodityAddTemp(){
+        return "commodity/commodityAdd";
+    }
+
+
+
+    @RequestMapping("/queryAllCommodity")
+    public ModelAndView queryAllCommodity(ModelAndView modelAndView){
+        modelAndView.setViewName("commodity/commodityList");
+        return modelAndView;
+    }
 }

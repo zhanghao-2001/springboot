@@ -26,8 +26,13 @@ public class CommodityclassController {
     @RequestMapping("/addCommodityClass")
     @ResponseBody
     public String addCommodityClass(Commodityclass commodityclass) {
-//        commodityclassService.saveOrUpdate(commodityclass);
+        commodityclassService.saveOrUpdate(commodityclass);
         return "增加商品种类成功";
+    }
+
+    @RequestMapping("/queryAllCommodityClass")
+    public String queryAllCommodityClass() {
+        return "commodityClassList";
     }
 
 

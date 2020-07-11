@@ -45,7 +45,9 @@ public class CommodityController {
 
     @RequestMapping("/queryAllCommodity")
     public ModelAndView queryAllCommodity(ModelAndView modelAndView) {
+        List<Commodity> commodityList = commodityService.list();
         modelAndView.setViewName("commodity/commodityList");
+        modelAndView.addObject("commodityList", commodityList);
         return modelAndView;
     }
 
@@ -55,7 +57,14 @@ public class CommodityController {
         System.out.println("commodity = " + commodity);
         commodity.setRegTime(new Date());
         commodity.setCommodityLeaveNum(commodity.getCommodityAmount());
-
+//        commodityService.saveOrUpdate(commodity);
         return "增加商品成功";
+    }
+
+    @RequestMapping("/deleteCommodity")
+    @ResponseBody
+    public String deleteCommodity(Commodity commodity) {
+        commodityService.removeById(commodity.getCommodityId());
+        return "删除成功";
     }
 }

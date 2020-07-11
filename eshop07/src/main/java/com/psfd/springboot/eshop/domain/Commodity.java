@@ -53,7 +53,7 @@ public class Commodity implements Serializable {
 
     private Date regTime;   //商品上架时间
 
-    private MultipartFile image;     //商品图片
+    private Blob image;     //商品图片
 
     public Integer getCommodityId() {
         return commodityId;
@@ -121,11 +121,11 @@ public class Commodity implements Serializable {
     }
 
 
-    public MultipartFile getImage() {
+    public Blob getImage() {
         return image;
     }
 
-    public void setImage(MultipartFile image) {
+    public void setImage(Blob image) {
         this.image = image;
     }
 

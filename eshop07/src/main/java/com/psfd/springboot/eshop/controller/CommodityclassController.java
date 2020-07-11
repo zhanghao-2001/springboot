@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * <p>
  * 前端控制器
@@ -24,6 +26,7 @@ public class CommodityclassController {
 
     @Autowired
     private ICommodityclassService commodityclassService;
+
     @RequestMapping("/addCommodityClass")
     @ResponseBody
     public String addCommodityClass(Commodityclass commodityclass) {
@@ -40,7 +43,9 @@ public class CommodityclassController {
 
     @RequestMapping("/queryAllCommodityClass")
     public ModelAndView queryAllCommodityClass(ModelAndView modelAndView) {
+        List<Commodityclass> commodityClassList = commodityclassService.list();
         modelAndView.setViewName("commodityclass/commodityClassList");
+        modelAndView.addObject("commodityClassList", commodityClassList);
         return modelAndView;
     }
 

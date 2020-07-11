@@ -2,6 +2,7 @@ package com.psfd.springboot.eshop.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Blob;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ public class Commodity implements Serializable {
 
     private Commodityclass commodityClass;     //商品种类
 
-    private String commodiyName;               //商品名称
+    private String commodityName;               //商品名称
 
     private String manufacturer;               //生产厂家
 
@@ -52,7 +53,7 @@ public class Commodity implements Serializable {
 
     private Date regTime;   //商品上架时间
 
-    private Blob image;     //商品图片
+    private MultipartFile image;     //商品图片
 
     public Integer getCommodityId() {
         return commodityId;
@@ -70,13 +71,6 @@ public class Commodity implements Serializable {
         this.commodityClass = commodityClass;
     }
 
-    public String getCommodiyName() {
-        return commodiyName;
-    }
-
-    public void setCommodiyName(String commodiyName) {
-        this.commodiyName = commodiyName;
-    }
 
     public String getManufacturer() {
         return manufacturer;
@@ -126,11 +120,12 @@ public class Commodity implements Serializable {
         this.regTime = regTime;
     }
 
-    public Blob getImage() {
+
+    public MultipartFile getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(MultipartFile image) {
         this.image = image;
     }
 
@@ -139,7 +134,7 @@ public class Commodity implements Serializable {
         return "Commodity{" +
                 "commodityId=" + commodityId +
                 ", commodityClass=" + commodityClass +
-                ", commodiyName='" + commodiyName + '\'' +
+                ", commodityName='" + commodityName + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", commodityDepict='" + commodityDepict + '\'' +
                 ", commdityPrice=" + commdityPrice +
@@ -149,5 +144,13 @@ public class Commodity implements Serializable {
                 ", regTime=" + regTime +
                 ", image=" + image +
                 '}';
+    }
+
+    public String getCommodityName() {
+        return commodityName;
+    }
+
+    public void setCommodityName(String commodityName) {
+        this.commodityName = commodityName;
     }
 }

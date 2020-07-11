@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <LINK href="css/Admin.css" rel=stylesheet>
-    <SCRIPT language=javascript src="js/admin.js"></SCRIPT>
+    <LINK href="../css/Admin.css" rel=stylesheet>
+    <SCRIPT language=javascript src="../js/admin.js"></SCRIPT>
 </head>
 <STYLE type=text/css>
     .STYLE1 {
@@ -28,74 +27,106 @@
             <TD class=forumrow width="30%" height=24>
                 <div align="right">商品名称：</div>
             </TD>
-            <TD class=forumrowhighlight width="70%"
-                height=24><input type="text" name="commodityName"></TD>
+            <TD class="forumrowhighlight" width="70%"
+                height=24><input type="text" name="commodityName" id="commodityName"></TD>
         </TR>
         <TR>
             <TD class=forumrow height=24>
                 <div align="right">商品分类：</div>
             </TD>
-            <TD class=forumrowhighlight
+            <TD class="forumrowhighlight"
                 height=24>
-                <select name="commodityClassID">
+                <select name="commodityClassID" id="commodityClassID">
+                    <option th:each="commodityclassTemp:${commodityclassList}"
+                            th:text="${commodityclassTemp.commodityClassName}"></option>
                 </select>
             </TD>
         </TR>
         <TR>
-            <TD class=forumrow height=24>
+            <TD class="forumrow" height=24>
                 <div align="right">生产厂家：</div>
             </TD>
-            <TD class=forumrowhighlight
-                height=24><input type="text" name="manufacturer"></TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="text" name="manufacturer" id="manufacturer"></TD>
         </TR>
         <TR>
-            <TD class=forumrow height=24>
+            <TD class="forumrow" height=24>
                 <div align="right">商品图片：</div>
             </TD>
-            <TD class=forumrowhighlight
-                height=24><input type="file" name="uploadImage"></TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="file" name="image" id="image"></TD>
         </TR>
         <TR>
-            <TD class=forumrow height=24>
+            <TD class="forumrow" height=24>
                 <div align="right">商品描述：</div>
             </TD>
-            <TD class=forumrowhighlight
-                height=24><textarea name="commodityDepict" cols="50" rows="5"></textarea></TD>
+            <TD class="forumrowhighlight"
+                height=24><textarea name="commodityDepict" cols="50" rows="5" id="commodityDepict"></textarea></TD>
         </TR>
         <TR>
             <TD class=forumrow height=24>
                 <div align="right">商品价格：</div>
             </TD>
-            <TD class=forumrowhighlight
-                height=24><input type="text" name="commodityPrice"></TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="number" name="commodityPrice" id="commodityPrice"></TD>
         </TR>
         <TR>
-            <TD class=forumrow height=24>
+            <TD class="forumrow" height=24>
                 <div align="right">帆成网价格：</div>
             </TD>
-            <TD class=forumrowhighlight
-                height=24><input type="text" name="fcPrice"></TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="number" name="fcPrice" id="fcPrice"></TD>
         </TR>
         <TR>
-            <TD class=forumrow height=24>
+            <TD class="forumrow" height=24>
                 <div align="right">商品总数量：</div>
             </TD>
             <TD class="forumrowhighlight"
-                height=24><input type="text" name="commodityAmount"></TD>
+                height=24><input type="number" name="commodityAmount" id="commodityAmount"></TD>
         </TR>
         <TR>
-            <TD class=forumrow height=24>&nbsp;</TD>
-            <TD class=forumrowhighlight
-                height=24><input type="submit" value="提交">
+            <TD class="forumrow" height=24>&nbsp;</TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="button" value="提交" id="inputsubmit">
                 <input type="reset" value="重置"></TD>
         </TR>
         </TBODY>
     </TABLE>
 </form>
 <BR>
-<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+<TABLE class="tableborder" cellSpacing=1 cellPadding=3 width="95%" align=center
        border=0>
 </TABLE>
 <BR>
 </BODY>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+    $("#inputsubmit").click(function () {
+        console.log($("#commodityClassID").val());
+        if (check()) {
+            $.post("addCommodity", {
+                "commodityName": $("#commodityName").val(),
+                "commodityClassID": $("#commodityClassID").val(),
+                "manufacturer": $("#manufacturer").val(),
+                "image": $("#image").val(),
+                "commodityDepict": $("#commodityDepict").val(),
+                "commodityPrice": $("#commodityPrice").val(),
+                "fcPrice": $("#fcPrice").val(),
+                "commodityAmount": $("#commodityAmount").val()
+            }, function (data) {
+                alert(data);
+            })
+        } else {
+            alert("有一项或多项输入为空");
+        }
+    })
+
+    function check() {
+        if ($("#commodityName").val() != "" && $("#commodityClassID").val() != null && $("#manufacturer").val() != "" && $("#uploadImage").val() != "" && $("#fcPrice").val() != "" && $("#commodityAmount").val() != "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 </html>

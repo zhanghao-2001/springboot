@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <LINK
-            href="css/style.css" type=text/css
+            href="../css/style.css" type=text/css
             rel=stylesheet>
-    <SCRIPT language=javaScript src="js/admin.js"
+    <SCRIPT language=javaScript src="../js/admin.js"
             type=text/javascript></SCRIPT>
 
     <SCRIPT language=javascript
-            src="js/Admin(1).js"></SCRIPT>
+            src="../js/Admin(1).js"></SCRIPT>
 </head>
 <STYLE>
     .main_left {
         TABLE-LAYOUT: auto;
-        BACKGROUND: url(img/left_bg.gif)
+        BACKGROUND: url(../img/left_bg.gif)
     }
 
     .main_left_top {
-        BACKGROUND: url(img/left_bg.gif);
+        BACKGROUND: url(../img/left_bg.gif);
         PADDING-TOP: 5px
     }
 
@@ -84,47 +84,47 @@
                         href="#">商品管理</A>
                     <DIV class="menu_childs" onmouseout=Menus.Hide(0);>
                         <UL>
-                            <LI><A href="commodityclass/commodityClassAdd.html" target="frmright">新增商品种类</A></LI>
+                            <LI><A href="../../templates/commodityclass/commodityClassAdd.html" target="frmright">新增商品种类</A></LI>
                             <LI><A href="queryAllCommodityClass" target="frmright">商品种类列表</A></LI>
-                            <LI><A href="commodity/commodityAdd.html" target="frmright">商品录入</A></LI>
-                            <LI><A href="commodity/commodityList.html" target="frmright">商品列表</A></LI>
+                            <LI><A href="../../templates/commodity/commodityAdd.html" target="frmright">商品录入</A></LI>
+                            <LI><A href="../../templates/commodity/commodityList.html" target="frmright">商品列表</A></LI>
                             </LI></UL>
                     </DIV>
                     <DIV class="menu_div"><IMG style="VERTICAL-ALIGN: bottom"
-                                               src="img/menu01_right.gif"></DIV>
+                                               src="../img/menu01_right.gif"></DIV>
                 </LI>
                 <LI id=menu_2 onmouseover=Menus.Show(this,0) onclick=getleftbar(this);><A
                         href="#">订单管理</A>
                     <DIV class="menu_childs" onmouseout=Menus.Hide(0);>
                         <UL>
-                            <LI><A href="order/orderList.html" target=frmright>订单列表</A></LI>
-                            <LI><A href="order/orderQuery.html"
+                            <LI><A href="../../templates/order/orderList.html" target=frmright>订单列表</A></LI>
+                            <LI><A href="../../templates/order/orderQuery.html"
                                    target=frmright>订单查询</A></LI>
                         </UL>
                     </DIV>
                     <DIV class=menu_div><IMG style="VERTICAL-ALIGN: bottom"
-                                             src="img/menu01_right.gif"></DIV>
+                                             src="../img/menu01_right.gif"></DIV>
                 </LI>
                 <LI id=menu_3 onmouseover=Menus.Show(this,0) onclick=getleftbar(this);><A
                         href="#">用户管理</A>
                     <DIV class="menu_childs" onmouseout=Menus.Hide(0);>
                         <UL>
-                            <LI><A href="user/userList.html" target="frmright">用户列表</A></LI>
-                            <LI><A href="user/userQuery.html" target=frmright>用户查询</A></LI>
+                            <LI><A href="../../templates/user/userList.html" target="frmright">用户列表</A></LI>
+                            <LI><A href="../../templates/user/userQuery.html" target=frmright>用户查询</A></LI>
                         </UL>
                     </DIV>
                     <DIV class="menu_div"><IMG style="VERTICAL-ALIGN: bottom"
-                                               src="img/menu01_right.gif"></DIV>
+                                               src="../img/menu01_right.gif"></DIV>
                 </LI>
                 <LI id=menu_4 onmouseover=Menus.Show(this,0) onclick=getleftbar(this);><A
                         href="#">系统管理</A>
                     <DIV class="menu_childs" onmouseout=Menus.Hide(0);>
                         <UL>
-                            <LI><A href="admin/amend.html" target=frmright>修改登录密码</A></LI>
+                            <LI><A href="amend.html" target=frmright>修改登录密码</A></LI>
                         </UL>
                     </DIV>
                     <DIV class="menu_div"><IMG style="VERTICAL-ALIGN: bottom"
-                                               src="img/menu01_right.gif"></DIV>
+                                               src="../img/menu01_right.gif"></DIV>
                 </LI>
             </UL>
         </DIV>
@@ -150,7 +150,7 @@
             </TABLE>
             <IFRAME
                     class="left_iframe" id="frmleft" name=frmleft
-                    src="admin/left.html" frameBorder=0
+                    src="left.html" frameBorder=0
                     allowTransparency></IFRAME>
             <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
                 <TBODY>
@@ -168,7 +168,7 @@
                 <TR>
                     <TD style="HEIGHT: 100%" onclick=switchSysBar()><SPAN class="navPoint"
                                                                           id="switchPoint" title=关闭/打开左栏><IMG
-                            src="img/right.gif"></SPAN>
+                            src="../img/right.gif"></SPAN>
                     </TD>
                 </TR>
                 </TBODY>
@@ -180,29 +180,29 @@
                 <TBODY>
                 <TR height=32>
                     <TD vAlign=top width=10
-                        background=img/bg2.gif><IMG alt=""
-                                                    src="../../static/img/teble_top_left.gif"></TD>
+                        background=../img/bg2.gif><IMG alt=""
+                                                       src="../../static/img/teble_top_left.gif"></TD>
                     <TD width=28
-                        background=img/bg2.gif></TD>
-                    <TD background=img/bg2.gif><SPAN
+                        background=../img/bg2.gif></TD>
+                    <TD background=../img/bg2.gif><SPAN
                             style="FLOAT: left">帆成购物系统后台管理</SPAN><SPAN
                             id=dvbbsannounce
                             style="FONT-WEIGHT: bold; FLOAT: left; WIDTH: 300px; COLOR: #c00"></SPAN></TD>
                     <TD style="COLOR: #135294; TEXT-ALIGN: right"
-                        background=img/bg2.gif>| <A
+                        background=../img/bg2.gif>| <A
                             href="#" target=_top>后台首页</A>
                         | <A href="#" target=_top>首页</A> | <A
                                 href="javascript:AdminOut()" target=_top>退出</A></TD>
                     <TD vAlign=top align=right width=28
-                        background=img/bg2.gif><IMG alt=""
-                                                    src="../../static/img/teble_top_right.gif"></TD>
+                        background=../img/bg2.gif><IMG alt=""
+                                                       src="../../static/img/teble_top_right.gif"></TD>
                     <TD align=right width=16 bgColor=#337abb></TD>
                 </TR>
                 </TBODY>
             </TABLE>
             <IFRAME
                     class="main_iframe" id="frmright" name="frmright"
-                    src="admin/syscome.html" frameBorder=0
+                    src="syscome.html" frameBorder=0
                     scrolling=yes></IFRAME>
             <TABLE style="BACKGROUND: #c4d8ed" cellSpacing=0 cellPadding=0
                    width="100%" border=0>
@@ -212,7 +212,7 @@
                              src="img/teble_bottom_left.gif"
                              width=5></TD>
                     <TD align=right><IMG height=6 alt=""
-                                         src="img/teble_bottom_right.gif"
+                                         src="../img/teble_bottom_right.gif"
                                          width=5></TD>
                     <TD align=right width=16
                         bgColor=#337abb></TD>

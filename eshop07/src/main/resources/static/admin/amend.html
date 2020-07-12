@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -28,6 +28,11 @@
             <TH colSpan=9 height=24>【修改登录密码】
             </TD>
         </TR>
+        <tr>
+            <td>
+                <input type="hidden" id="adminId" name="adminId" >
+            </td>
+        </tr>
         <TR>
             <TD class=forumrow>
                 <div align="right">原密码：</div>

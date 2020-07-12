@@ -36,50 +36,63 @@
         <TD class=forumrow>是否发货</TD>
         <TD class=forumrow>操作</TD>
     </TR>
-    <TR>
-        <TD class=forumrow>010102</TD>
-        <TD class=forumrow>bjame</TD>
-        <TD class=forumrow>2009-10-30</TD>
-        <TD class=forumrow>2009-10-30</TD>
-        <TD class=forumrow>4895.00</TD>
-        <TD class=forumrow>127.0.0.1</TD>
-        <TD class=forumrow>是</TD>
-        <TD class=forumrow>是</TD>
+    <!--    <TR>-->
+    <!--        <TD class=forumrow>010102</TD>-->
+    <!--        <TD class=forumrow>bjame</TD>-->
+    <!--        <TD class=forumrow>2009-10-30</TD>-->
+    <!--        <TD class=forumrow>2009-10-30</TD>-->
+    <!--        <TD class=forumrow>4895.00</TD>-->
+    <!--        <TD class=forumrow>127.0.0.1</TD>-->
+    <!--        <TD class=forumrow>是</TD>-->
+    <!--        <TD class=forumrow>是</TD>-->
+    <!--        <TD class=forumrow>付款&nbsp;发货</TD>-->
+    <!--    </TR>-->
+    <!--    <TR>-->
+    <!--        <TD class=forumrow>010103</TD>-->
+    <!--        <TD class=forumrow>akebo</TD>-->
+    <!--        <TD class=forumrow>2009-10-30</TD>-->
+    <!--        <TD class=forumrow>2009-10-30</TD>-->
+    <!--        <TD class=forumrow>9188.00</TD>-->
+    <!--        <TD class=forumrow>127.0.0.1</TD>-->
+    <!--        <TD class=forumrow>是</TD>-->
+    <!--        <TD class=forumrow>是</TD>-->
+    <!--        <TD class=forumrow>付款&nbsp;发货</TD>-->
+    <!--    </TR>-->
+    <!--    <TR>-->
+    <!--        <TD class=forumrow>010104</TD>-->
+    <!--        <TD class=forumrow>sanzxi</TD>-->
+    <!--        <TD class=forumrow>2009-10-30</TD>-->
+    <!--        <TD class=forumrow>2009-10-30</TD>-->
+    <!--        <TD class=forumrow>199.00</TD>-->
+    <!--        <TD class=forumrow>127.0.0.1</TD>-->
+    <!--        <TD class=forumrow>是</TD>-->
+    <!--        <TD class=forumrow>是</TD>-->
+    <!--        <TD class=forumrow>付款&nbsp;发货</TD>-->
+    <!--    </TR>-->
+    <!--    <TR>-->
+    <!--        <TD class=forumrow>010105</TD>-->
+    <!--        <TD class=forumrow>lixing</TD>-->
+    <!--        <TD class=forumrow>2009-10-30</TD>-->
+    <!--        <TD class=forumrow>2009-10-30</TD>-->
+    <!--        <TD class=forumrow>238.00</TD>-->
+    <!--        <TD class=forumrow>127.0.0.1</TD>-->
+    <!--        <TD class=forumrow>是</TD>-->
+    <!--        <TD class=forumrow>是</TD>-->
+    <!--        <TD class=forumrow>付款&nbsp;发货</TD>-->
+    <!--    </TR>-->
+
+    <tr th:each="orderFormTemp:${orderFormList}">
+        <TD class=forumrow th:text="${orderFormTemp.orderFormId}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.user.name}"></TD>
+        <TD class=forumrow th:text="${#dates.format(orderFormTemp.submitTime,'yyyy-MM-dd')}"></TD>
+        <TD class=forumrow th:text="${#dates.format(orderFormTemp.consignmentTime,'yyyy-MM-dd')}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.totalPrice}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.idaddress}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.isPayoff==1?'是':'否'}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.isConsignment==1?'是':'否'}"></TD>
         <TD class=forumrow>付款&nbsp;发货</TD>
-    </TR>
-    <TR>
-        <TD class=forumrow>010103</TD>
-        <TD class=forumrow>akebo</TD>
-        <TD class=forumrow>2009-10-30</TD>
-        <TD class=forumrow>2009-10-30</TD>
-        <TD class=forumrow>9188.00</TD>
-        <TD class=forumrow>127.0.0.1</TD>
-        <TD class=forumrow>是</TD>
-        <TD class=forumrow>是</TD>
-        <TD class=forumrow>付款&nbsp;发货</TD>
-    </TR>
-    <TR>
-        <TD class=forumrow>010104</TD>
-        <TD class=forumrow>sanzxi</TD>
-        <TD class=forumrow>2009-10-30</TD>
-        <TD class=forumrow>2009-10-30</TD>
-        <TD class=forumrow>199.00</TD>
-        <TD class=forumrow>127.0.0.1</TD>
-        <TD class=forumrow>是</TD>
-        <TD class=forumrow>是</TD>
-        <TD class=forumrow>付款&nbsp;发货</TD>
-    </TR>
-    <TR>
-        <TD class=forumrow>010105</TD>
-        <TD class=forumrow>lixing</TD>
-        <TD class=forumrow>2009-10-30</TD>
-        <TD class=forumrow>2009-10-30</TD>
-        <TD class=forumrow>238.00</TD>
-        <TD class=forumrow>127.0.0.1</TD>
-        <TD class=forumrow>是</TD>
-        <TD class=forumrow>是</TD>
-        <TD class=forumrow>付款&nbsp;发货</TD>
-    </TR>
+    </tr>
+
     </TBODY>
 </TABLE>
 <BR>

@@ -33,24 +33,24 @@
                 <div align="right">原密码：</div>
             </TD>
             <TD colspan="8" class="forumrowhighlight">
-                <input type="text" name="textfield"></TD>
+                <input type="text" name="password" id="password"></TD>
         </TR>
         <TR>
             <TD class=forumrow>
                 <div align="right">新密码：</div>
             </TD>
-            <TD colspan="8" class=forumrowhighlight><input type="text" name="textfield2"></TD>
+            <TD colspan="8" class=forumrowhighlight><input type="text" name="newPassword" id="newPassword"></TD>
         </TR>
         <TR>
             <TD class=forumrow>
                 <div align="right">确认密码：</div>
             </TD>
-            <TD colspan="8" class=forumrowhighlight><input type="text" name="textfield22"></TD>
+            <TD colspan="8" class="forumrowhighlight"><input type="text" name="newPasswordOne" id="newPasswordOne"></TD>
         </TR>
 
         <TR>
             <TD class=forumrow>&nbsp;</TD>
-            <TD colspan="8" class=forumrowhighlight><input type="submit" name="Submit" value="提交">
+            <TD colspan="8" class=forumrowhighlight><input type="button" name="Submit" value="提交" id="inputsubmit">
                 <input type="reset" name="Submit2" value="重置"></TD>
         </TR>
         </TBODY>
@@ -62,4 +62,20 @@
 </TABLE>
 <BR>
 </BODY>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+    $("#inputsubmit").click(function () {
+        if ($("#password").val() != "" && $("#newPassword").val() != "" && $("#newPasswordOne").val() != "") {
+            $.post("updatePassword", {
+                "password": $("#password").val(),
+                "newPassword": $("#newPassword").val(),
+                "newPasswordOne": $("#newPasswordOne").val()
+            }, function (data) {
+                alert(data);
+            })
+        } else {
+            alert("有一项或多项为空");
+        }
+    })
+</script>
 </html>

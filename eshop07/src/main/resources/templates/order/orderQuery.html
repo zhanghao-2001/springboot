@@ -14,11 +14,11 @@
     }
 </STYLE>
 <BODY><BR>
-<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+<TABLE class="tableborder" cellSpacing=1 cellPadding=3 width="95%" align=center
        border=0>
 </TABLE>
 <BR>
-<form name="form1" method="post" action="">
+<form name="form1" method="post" action="queryOrderById" onsubmit="return check()">
     <TABLE cellSpacing=1 cellPadding=3 width="95%" align=center bgColor=#6ab6b6
            border=0>
         <TBODY>
@@ -30,31 +30,31 @@
                 <div align="right">订单编号：</div>
             </TD>
             <TD colspan="8" class=forumrowhighlight>
-                <input type="text" name="textfield"></TD>
+                <input type="text" name="orderFormId" id="orderFormId"></TD>
         </TR>
         <TR>
             <TD class=forumrow>
                 <div align="right">买家用户名：</div>
             </TD>
-            <TD colspan="8" class=forumrowhighlight><input type="text" name="textfield2"></TD>
+            <TD colspan="8" class=forumrowhighlight><input type="text" name="name" id="name"></TD>
         </TR>
         <TR>
             <TD class=forumrow>
                 <div align="right">提交订单时间：</div>
             </TD>
-            <TD colspan="8" class=forumrowhighlight><input type="text" name="textfield22"></TD>
+            <TD colspan="8" class=forumrowhighlight><input type="text" name="submitTime" id="submitTime"></TD>
         </TR>
         <TR>
             <TD class=forumrow>
                 <div align="right">发货时间：</div>
             </TD>
-            <TD colspan="8" class=forumrowhighlight><input type="text" name="textfield222"></TD>
+            <TD colspan="8" class=forumrowhighlight><input type="text" name="consignmentTime" id="consignmentTime"></TD>
         </TR>
         <TR>
             <TD class=forumrow>
                 <div align="right">买家IP地址：</div>
             </TD>
-            <TD colspan="8" class=forumrowhighlight><input type="text" name="textfield2222"></TD>
+            <TD colspan="8" class="forumrowhighlight"><input type="text" name="ipaddress" id="ipaddress"></TD>
         </TR>
         <TR>
             <TD class=forumrow>&nbsp;</TD>
@@ -70,4 +70,15 @@
 </TABLE>
 <BR>
 </BODY>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+    function check() {
+        if ($("#orderFormId").val() != "" && $("#name").val() != "" && $("#submitTime").val() != "" && $("#consignmentTime").val() != "" && $("#ipaddress").val() != "" && $("#ipaddress").val() != "") {
+            return true;
+        } else {
+            alert("有一项或多项为空");
+            return false;
+        }
+    }
+</script>
 </html>

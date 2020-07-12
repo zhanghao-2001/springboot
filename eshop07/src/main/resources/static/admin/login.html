@@ -7,7 +7,7 @@
     <LINK href="../css/newhead.css" type=text/css rel=stylesheet>
 </head>
 <BODY bgColor=#eef8e0 leftMargin=0 topMargin=0 MARGINWIDTH="0" MARGINHEIGHT="0">
-<FORM name="adminlogin" action="../login" method="post" onsubmit="return check()">
+<FORM name="adminlogin" action="" method="post">
     <TABLE cellSpacing=0 cellPadding=0 width=1004 border=0>
         <TBODY>
         <TR>
@@ -112,8 +112,6 @@
 <script src="../js/jquery-3.4.1.min.js">
 </script>
 <script>
-
-
     function check() {
         if ($("#username").val() != "" && $("#password").val() != "") {
             return true;
@@ -122,5 +120,25 @@
             return false;
         }
     }
+
+    $("#inputsubmit").click(function () {
+            if (check()) {
+                $.post("login", {
+                    "username": $("#username").val(),
+                    "password": $("#password").val()
+                }, function (data) {
+                    console.log(data);
+                    if (data === "1") {
+                        window.location = "index.html";
+                    } else {
+                        alert("用户密码或密码有误");
+                    }
+                })
+            }
+
+        }
+    )
+
+
 </script>
 </html>

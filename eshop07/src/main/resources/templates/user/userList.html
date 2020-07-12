@@ -1,4 +1,4 @@
-<HTML>
+<HTML lang="en" xmlns:th="http://www.thymeleaf.org">
 <HEAD><TITLE>欢迎进入系统后台</TITLE>
     <META http-equiv=Content-Type content="text/html; charset=UTF-8">
     <LINK
@@ -35,50 +35,61 @@
         <TD class=forumrow>邮寄地址</TD>
         <TD class=forumrow>操作</TD>
     </TR>
-    <TR>
-        <TD class=forumrow>11245</TD>
-        <TD class=forumrow>bjame</TD>
-        <TD class=forumrow>123456789</TD>
-        <TD class=forumrow>张牛</TD>
-        <TD class=forumrow>男</TD>
-        <TD class=forumrow>北京海淀区</TD>
-        <TD class=forumrow>12345678</TD>
-        <TD class=forumrow>北京海淀区</TD>
-        <TD class=forumrow>删除</TD>
-    </TR>
-    <TR>
-        <TD class=forumrow>11245</TD>
-        <TD class=forumrow>akebo</TD>
-        <TD class=forumrow>123456789</TD>
-        <TD class=forumrow>李丽</TD>
-        <TD class=forumrow>女</TD>
-        <TD class=forumrow>上海徐汇区</TD>
-        <TD class=forumrow>12345678</TD>
-        <TD class=forumrow>上海徐汇区</TD>
-        <TD class=forumrow>删除</TD>
-    </TR>
-    <TR>
-        <TD class=forumrow>11245</TD>
-        <TD class=forumrow>sanzxi</TD>
-        <TD class=forumrow>123456789</TD>
-        <TD class=forumrow>刘森</TD>
-        <TD class=forumrow>男</TD>
-        <TD class=forumrow>长沙开福区</TD>
-        <TD class=forumrow>12345678</TD>
-        <TD class=forumrow>长沙开福区</TD>
-        <TD class=forumrow>删除</TD>
-    </TR>
-    <TR>
-        <TD class=forumrow>11245</TD>
-        <TD class=forumrow>lixing</TD>
-        <TD class=forumrow>123456789</TD>
-        <TD class=forumrow>顾秀</TD>
-        <TD class=forumrow>女</TD>
-        <TD class=forumrow>深圳福田区</TD>
-        <TD class=forumrow>12345678</TD>
-        <TD class=forumrow>深圳福田区</TD>
-        <TD class=forumrow>删除</TD>
-    </TR>
+    <!--    <TR>-->
+    <!--        <TD class=forumrow>11245</TD>-->
+    <!--        <TD class=forumrow>bjame</TD>-->
+    <!--        <TD class=forumrow>123456789</TD>-->
+    <!--        <TD class=forumrow>张牛</TD>-->
+    <!--        <TD class=forumrow>男</TD>-->
+    <!--        <TD class=forumrow>北京海淀区</TD>-->
+    <!--        <TD class=forumrow>12345678</TD>-->
+    <!--        <TD class=forumrow>北京海淀区</TD>-->
+    <!--        <TD class=forumrow>删除</TD>-->
+    <!--    </TR>-->
+    <!--    <TR>-->
+    <!--        <TD class=forumrow>11245</TD>-->
+    <!--        <TD class=forumrow>akebo</TD>-->
+    <!--        <TD class=forumrow>123456789</TD>-->
+    <!--        <TD class=forumrow>李丽</TD>-->
+    <!--        <TD class=forumrow>女</TD>-->
+    <!--        <TD class=forumrow>上海徐汇区</TD>-->
+    <!--        <TD class=forumrow>12345678</TD>-->
+    <!--        <TD class=forumrow>上海徐汇区</TD>-->
+    <!--        <TD class=forumrow>删除</TD>-->
+    <!--    </TR>-->
+    <!--    <TR>-->
+    <!--        <TD class=forumrow>11245</TD>-->
+    <!--        <TD class=forumrow>sanzxi</TD>-->
+    <!--        <TD class=forumrow>123456789</TD>-->
+    <!--        <TD class=forumrow>刘森</TD>-->
+    <!--        <TD class=forumrow>男</TD>-->
+    <!--        <TD class=forumrow>长沙开福区</TD>-->
+    <!--        <TD class=forumrow>12345678</TD>-->
+    <!--        <TD class=forumrow>长沙开福区</TD>-->
+    <!--        <TD class=forumrow>删除</TD>-->
+    <!--    </TR>-->
+    <!--    <TR>-->
+    <!--        <TD class=forumrow>11245</TD>-->
+    <!--        <TD class=forumrow>lixing</TD>-->
+    <!--        <TD class=forumrow>123456789</TD>-->
+    <!--        <TD class=forumrow>顾秀</TD>-->
+    <!--        <TD class=forumrow>女</TD>-->
+    <!--        <TD class=forumrow>深圳福田区</TD>-->
+    <!--        <TD class=forumrow>12345678</TD>-->
+    <!--        <TD class=forumrow>深圳福田区</TD>-->
+    <!--        <TD class=forumrow>删除</TD>-->
+    <!--    </TR>-->
+    <tr th:each="userTemp:${userList}">
+        <TD class="forumrow" th:text="${userTemp.userId}"></TD>
+        <TD class="forumrow" th:text="${userTemp.username}"></TD>
+        <TD class="forumrow" th:text="${userTemp.password}"></TD>
+        <TD class="forumrow" th:text="${userTemp.name}"></TD>
+        <TD class="forumrow" th:text="${userTemp.sex==1?'男':'女'}"></TD>
+        <TD class="forumrow" th:text="${userTemp.address}"></TD>
+        <TD class="forumrow" th:text="${userTemp.phone}"></TD>
+        <TD class="forumrow" th:text="${userTemp.post}"></TD>
+        <TD class="forumrow">删除</TD>
+    </tr>
     </TBODY>
 </TABLE>
 <BR>

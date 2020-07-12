@@ -23,9 +23,10 @@ public class Orderform implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "order_form_id", type = IdType.AUTO)
-    private Integer orderFormId;
+    private Integer orderFormId;        //订单编号
 
 
+    @TableField("user_id")
     private User user;          //用户信息
 
     private String orderFromNo; //订单序号
@@ -38,12 +39,12 @@ public class Orderform implements Serializable {
 
     private String remark;      //买家备注
 
-    private String idaddress;   //买家Ip地址
+    private String ipaddress;   //买家Ip地址
 
-    private Integer isPayoff;   //是否发货
+    private Integer isPayoff;   //买家是否发货
 
     @TableField("isConsignment")
-    private Integer isConsignment;
+    private Integer isConsignment;      //是否发货
 
     public Integer getOrderFormId() {
         return orderFormId;
@@ -98,13 +99,6 @@ public class Orderform implements Serializable {
         this.remark = remark;
     }
 
-    public String getIdaddress() {
-        return idaddress;
-    }
-
-    public void setIdaddress(String idaddress) {
-        this.idaddress = idaddress;
-    }
 
     public Integer getIsPayoff() {
         return isPayoff;
@@ -136,10 +130,18 @@ public class Orderform implements Serializable {
                 ", consignmentTime=" + consignmentTime +
                 ", totalPrice=" + totalPrice +
                 ", remark='" + remark + '\'' +
-                ", idaddress='" + idaddress + '\'' +
+                ", ipaddress='" + ipaddress + '\'' +
                 ", isPayoff=" + isPayoff +
                 ", isConsignment=" + isConsignment +
                 '}';
+    }
+
+    public String getIpaddress() {
+        return ipaddress;
+    }
+
+    public void setIpaddress(String ipaddress) {
+        this.ipaddress = ipaddress;
     }
 
     public Date getConsignmentTime() {

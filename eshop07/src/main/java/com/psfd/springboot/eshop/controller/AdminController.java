@@ -19,19 +19,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 2020-07-10
  */
 @Controller
+@RequestMapping("admin")
 public class AdminController {
 
     @Autowired
     private IAdminService adminService;
 
     @RequestMapping("/login")
+    @ResponseBody
     public String login(Admin admin) {
         System.out.println("admin = " + admin);
         QueryWrapper<Admin> wrapper = new QueryWrapper<>();
         wrapper.eq("username", admin.getUsername());
         wrapper.eq("password", admin.getPassword());
-        int count = adminService.count(wrapper);
-        String url = count == 1 ? "index" : "error";
-        return url;
+        Integer count = adminService.count(wrapper);
+        return count.toString();
+    }
+
+    @RequestMapping("/updatePassword")
+    @ResponseBody
+    public String updatePassword(Admin admin, String newPassword, String newPasswordOne) {
+        if (newPassword.equals(newPasswordOne)) {
+            admin.setPassword(newPassword);
+            return "修改密码成功";
+        } else {
+            return "两次输入的密码不一致";
+        }
     }
 }

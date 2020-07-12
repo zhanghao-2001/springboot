@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Blob;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -53,7 +54,8 @@ public class Commodity implements Serializable {
 
     private Date regTime;   //商品上架时间
 
-    private Blob image;     //商品图片
+
+    private String image;     //商品图片
 
     public Integer getCommodityId() {
         return commodityId;
@@ -121,29 +123,12 @@ public class Commodity implements Serializable {
     }
 
 
-    public Blob getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(String image) {
         this.image = image;
-    }
-
-    @Override
-    public String toString() {
-        return "Commodity{" +
-                "commodityId=" + commodityId +
-                ", commodityClass=" + commodityClass +
-                ", commodityName='" + commodityName + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", commodityDepict='" + commodityDepict + '\'' +
-                ", commdityPrice=" + commdityPrice +
-                ", fcPrice=" + fcPrice +
-                ", commodityAmount=" + commodityAmount +
-                ", commodityLeaveNum=" + commodityLeaveNum +
-                ", regTime=" + regTime +
-                ", image=" + image +
-                '}';
     }
 
     public String getCommodityName() {

@@ -5,14 +5,23 @@ import com.psfd.springboot.eshop.domain.Commodity;
 import com.psfd.springboot.eshop.domain.Commodityclass;
 import com.psfd.springboot.eshop.service.ICommodityService;
 import com.psfd.springboot.eshop.service.ICommodityclassService;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -53,11 +62,11 @@ public class CommodityController {
 
     @RequestMapping("/addCommodity")
     @ResponseBody
-    public String addCommodity(Commodity commodity) {
-        System.out.println("commodity = " + commodity);
+    public String addCommodity(Commodity commodity, @RequestParam("uploadImage") MultipartFile uploadImage, HttpServletRequest request) {
+        System.out.println("uploadImage = " + uploadImage);
         commodity.setRegTime(new Date());
         commodity.setCommodityLeaveNum(commodity.getCommodityAmount());
-//        commodityService.saveOrUpdate(commodity);
+        commodityService.saveOrUpdate(commodity);
         return "增加商品成功";
     }
 

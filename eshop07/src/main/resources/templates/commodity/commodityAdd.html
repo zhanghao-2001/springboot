@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
     <LINK href="../css/Admin.css" rel=stylesheet>
     <SCRIPT language=javascript src="../js/admin.js"></SCRIPT>
 </head>
@@ -16,7 +16,7 @@
        border=0>
 </TABLE>
 <BR>
-<form action="" method="post" enctype="multipart/form-data">
+<form action="addCommodity" method="post" enctype="multipart/form-data">
     <TABLE cellSpacing=1 cellPadding=3 width="95%" align=center bgColor=#6ab6b6
            border=0>
         <TBODY>
@@ -54,7 +54,7 @@
                 <div align="right">商品图片：</div>
             </TD>
             <TD class="forumrowhighlight"
-                height=24><input type="file" name="image" id="image"></TD>
+                height=24><input type="file" name="uploadImage" id="uploadImage"></TD>
         </TR>
         <TR>
             <TD class="forumrow" height=24>
@@ -87,7 +87,7 @@
         <TR>
             <TD class="forumrow" height=24>&nbsp;</TD>
             <TD class="forumrowhighlight"
-                height=24><input type="button" value="提交" id="inputsubmit">
+                height=24><input type="submit" value="提交" id="inputsubmit">
                 <input type="reset" value="重置"></TD>
         </TR>
         </TBODY>
@@ -101,25 +101,25 @@
 </BODY>
 <script src="../js/jquery-3.4.1.min.js"></script>
 <script>
-    $("#inputsubmit").click(function () {
-        console.log($("#commodityClassID").val());
-        if (check()) {
-            $.post("addCommodity", {
-                "commodityName": $("#commodityName").val(),
-                "commodityClassID": $("#commodityClassID").val(),
-                "manufacturer": $("#manufacturer").val(),
-                "image": $("#image").val(),
-                "commodityDepict": $("#commodityDepict").val(),
-                "commodityPrice": $("#commodityPrice").val(),
-                "fcPrice": $("#fcPrice").val(),
-                "commodityAmount": $("#commodityAmount").val()
-            }, function (data) {
-                alert(data);
-            })
-        } else {
-            alert("有一项或多项输入为空");
-        }
-    })
+    // $("#inputsubmit").click(function () {
+    //     console.log($("#commodityClassID").val());
+    //     if (check()) {
+    //         $.post("addCommodity", {
+    //             "commodityName": $("#commodityName").val(),
+    //             "commodityClassID": $("#commodityClassID").val(),
+    //             "manufacturer": $("#manufacturer").val(),
+    //             "uploadImage": $("#uploadImage").val(),
+    //             "commodityDepict": $("#commodityDepict").val(),
+    //             "commodityPrice": $("#commodityPrice").val(),
+    //             "fcPrice": $("#fcPrice").val(),
+    //             "commodityAmount": $("#commodityAmount").val()
+    //         }, function (data) {
+    //             alert(data);
+    //         })
+    //     } else {
+    //         alert("有一项或多项输入为空");
+    //     }
+    // })
 
     function check() {
         if ($("#commodityName").val() != "" && $("#commodityClassID").val() != null && $("#manufacturer").val() != "" && $("#uploadImage").val() != "" && $("#fcPrice").val() != "" && $("#commodityAmount").val() != "") {

@@ -22,11 +22,10 @@ public class Orderform implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "order_form_id", type = IdType.AUTO)
+    @TableId(type = IdType.AUTO)
     private Integer orderFormId;        //订单编号
 
 
-    @TableField("user_id")
     private User user;          //用户信息
 
     private String orderFromNo; //订单序号

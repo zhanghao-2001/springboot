@@ -21,7 +21,7 @@ public class Commodity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "commodity_id", type = IdType.AUTO)
+    @TableId(type = IdType.AUTO)
     private Integer commodityId;                //商品编号
 
     private Commodityclass commodityClass;     //商品种类
@@ -44,7 +44,7 @@ public class Commodity implements Serializable {
         this.commodityDepict = commodityDepict;
     }
 
-    private Double commdityPrice;           //商品价格
+    private Double commodityPrice;           //商品价格
 
     private Double fcPrice;                 //帆城网价格
 
@@ -82,13 +82,6 @@ public class Commodity implements Serializable {
         this.manufacturer = manufacturer;
     }
 
-    public Double getCommdityPrice() {
-        return commdityPrice;
-    }
-
-    public void setCommdityPrice(Double commdityPrice) {
-        this.commdityPrice = commdityPrice;
-    }
 
     public Double getFcPrice() {
         return fcPrice;
@@ -133,6 +126,31 @@ public class Commodity implements Serializable {
 
     public String getCommodityName() {
         return commodityName;
+    }
+
+    public Double getCommodityPrice() {
+        return commodityPrice;
+    }
+
+    public void setCommodityPrice(Double commodityPrice) {
+        this.commodityPrice = commodityPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Commodity{" +
+                "commodityId=" + commodityId +
+                ", commodityClass=" + commodityClass +
+                ", commodityName='" + commodityName + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", commodityDepict='" + commodityDepict + '\'' +
+                ", commodityPrice=" + commodityPrice +
+                ", fcPrice=" + fcPrice +
+                ", commodityAmount=" + commodityAmount +
+                ", commodityLeaveNum=" + commodityLeaveNum +
+                ", regTime=" + regTime +
+                ", image='" + image + '\'' +
+                '}';
     }
 
     public void setCommodityName(String commodityName) {

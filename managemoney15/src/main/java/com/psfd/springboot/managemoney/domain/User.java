@@ -1,6 +1,5 @@
 package com.psfd.springboot.managemoney.domain;
 
-import netscape.security.PrivilegeTable;
 
 public class User {
     private int userId;

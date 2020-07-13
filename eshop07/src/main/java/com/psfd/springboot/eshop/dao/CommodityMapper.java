@@ -5,6 +5,8 @@ import com.psfd.springboot.eshop.domain.Commodity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * <p>
  * Mapper 接口
@@ -17,4 +19,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CommodityMapper extends BaseMapper<Commodity> {
 
+    void addCommodity(Commodity commodity);
+
+    List<Commodity> queryAllCommodity();
 }

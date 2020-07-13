@@ -9,6 +9,7 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ClassUtils;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Date;
 import java.util.List;
 
@@ -54,7 +52,8 @@ public class CommodityController {
 
     @RequestMapping("/queryAllCommodity")
     public ModelAndView queryAllCommodity(ModelAndView modelAndView) {
-        List<Commodity> commodityList = commodityService.list();
+        List<Commodity> commodityList = commodityService.queryAllCommodity();
+        System.out.println("commodityList = " + commodityList);
         modelAndView.setViewName("commodity/commodityList");
         modelAndView.addObject("commodityList", commodityList);
         return modelAndView;
@@ -62,11 +61,34 @@ public class CommodityController {
 
     @RequestMapping("/addCommodity")
     @ResponseBody
-    public String addCommodity(Commodity commodity, @RequestParam("uploadImage") MultipartFile uploadImage, HttpServletRequest request) {
+    public String addCommodity(Commodity commodity, @RequestParam("uploadImage") MultipartFile uploadImage, String commodityClassID) {
         System.out.println("uploadImage = " + uploadImage);
+        String originalFilename = uploadImage.getOriginalFilename();
+        System.out.println("originalFilename = " + originalFilename);
+        String name = uploadImage.getName();
+        System.out.println("name = " + name);
+        String image = null;
+        try {
+            String locationPath = ResourceUtils.getURL("classpath:static").getPath();
+            String savePath = locationPath.concat("/upload");
+            Commodityclass commodityclass = new Commodityclass();
+            commodityclass.setCommodityClassid(Integer.parseInt(commodityClassID));
+            commodity.setCommodityClass(commodityclass);
+            File file = new File(savePath);
+            System.out.println("locationPath = " + locationPath);
+            if (!file.exists()) {
+                file.mkdir();
+            }
+            image = savePath + "/" + originalFilename;
+            uploadImage.transferTo(new File(image));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        commodity.setImage(image);
         commodity.setRegTime(new Date());
         commodity.setCommodityLeaveNum(commodity.getCommodityAmount());
-        commodityService.saveOrUpdate(commodity);
+        commodityService.addCommodity(commodity);
         return "增加商品成功";
     }
 

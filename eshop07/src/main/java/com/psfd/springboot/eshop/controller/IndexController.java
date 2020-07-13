@@ -1,5 +1,6 @@
 package com.psfd.springboot.eshop.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.psfd.springboot.eshop.domain.Commodity;
 import com.psfd.springboot.eshop.domain.Commodityclass;
 import com.psfd.springboot.eshop.service.ICommodityService;
@@ -30,10 +31,14 @@ public class IndexController {
     }
 
     @RequestMapping("/queryCommodityClass")
-    public ModelAndView queryCommodityClass(ModelAndView modelAndView){
-        List<Commodity> commodityList = commodityService.list();
+    public ModelAndView queryCommodityClass(ModelAndView modelAndView, Commodityclass commodityclass) {
+        QueryWrapper<Commodity> wrapper = new QueryWrapper<>();
+        wrapper.eq("commodity_class", commodityclass.getCommodityClassid());
+        List<Commodity> commodityList = commodityService.list(wrapper);
+        List<Commodityclass> commodityclassList = commodityclassService.list();
         modelAndView.setViewName("index");
-        modelAndView.addObject("commodityList",commodityList);
+        modelAndView.addObject("commodityList", commodityList);
+        modelAndView.addObject("commodityclassList", commodityclassList);
         return modelAndView;
     }
 

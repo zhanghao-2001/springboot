@@ -17,7 +17,7 @@ public class Commodityclass implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "commodity_classId", type = IdType.AUTO)
+    @TableId(type = IdType.AUTO)
     private Integer commodityClassid;       //商品种类编号
 
     private String commodityClassName;      //商品种类名称

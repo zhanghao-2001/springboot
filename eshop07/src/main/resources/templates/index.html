@@ -24,7 +24,7 @@
                 <li class="divider"></li>
                 <li><a href="#" class="nav2">在线购物</a></li>
                 <li class="divider"></li>
-                <li><a href="#" class="nav5">我的购物车</a></li>
+                <li><a href="showCar" class="nav5">我的购物车</a></li>
                 <li class="divider"></li>
                 <li><a href="#" class="nav4">用户信息</a></li>
                 <li class="divider"></li>
@@ -70,22 +70,22 @@
                 <div class="center_prod_box">
                     <div class="product_title">
                         <a href="showCommodity.action?commodityID=${commodity.commodityId}"
-                           th:text="${commodityTemp.commodityName}">
+                        >
                         </a>
                     </div>
                     <div class="product_img"><a
                             href="#"><img
-                            src="#" alt="" title=""
-                            border="0"/></a></div>
-                    <div class="prod_price"><span class="reduce"></span> <span
-                            class="price"></span></div>
+                            alt="" title=""
+                            border="0" th:src="${commodityTemp.image}"/></a></div>
+                    <div class="prod_price"><span class="reduce" th:text="${commodityTemp.commodityPrice}"></span> <span
+                            class="price" th:text="${commodityTemp.fcPrice}"></span></div>
                 </div>
                 <div class="bottom_prod_box"></div>
                 <div class="prod_details_tab">
                     <a href="#"
-                       title="header=[添加到购物车] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" title=""
+                       title="header=[添加到购物车] body=[&nbsp;] fade=[on]"><img src="img/cart.gif" alt="" title=""
                                                                             border="0" class="left_bt"/></a>
-                    <a href="#" class="prod_details">详细</a>
+                    <a th:href="@{showdetails(commodityId=${commodityTemp.commodityId})}" class="prod_details">详细</a>
                 </div>
             </div>
         </div><!-- end of center content -->

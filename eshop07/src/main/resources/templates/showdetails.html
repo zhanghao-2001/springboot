@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -23,7 +23,7 @@
                 <li class="divider"></li>
                 <li><a href="#" class="nav2">在线购物</a></li>
                 <li class="divider"></li>
-                <li><a href="#" class="nav5">我的购物车</a></li>
+                <li><a href="showCar" class="nav5">我的购物车</a></li>
                 <li class="divider"></li>
                 <li><a href="#" class="nav4">用户信息</a></li>
                 <li class="divider"></li>
@@ -39,7 +39,7 @@
         </div><!-- end of menu tab -->
 
         <div class="crumb_navigation">
-            导航:<span class="current">首页>></span>
+            导航:<span class="current">首页>>详情</span>
 
         </div>
 
@@ -47,15 +47,12 @@
         <div class="left_content">
             <div class="title_box">商品分类</div>
             <ul class="left_menu">
-                <li class="odd">
-                    <a href="#">
+                <li class="odd" th:each="commodityClassTemp:${commodityclassList}">
+                    <a th:href="@{queryCommodityClass(commodityClassid=${commodityClassTemp.commodityClassid})}"
+                       th:text="${commodityClassTemp.commodityClassName}">
                     </a>
                 </li>
-                <li class="even">
-                    <a href="#">
-                    </a>
-                </li>
-                <li class="odd"></li>
+
             </ul>
             <div class="banner_adds">
 
@@ -73,22 +70,26 @@
                         </div>
                     </div>
                     <div class="details_big_box">
-                        <div class="product_title_big"></div>
+                        <div class="product_title_big">
+                            <div><img th:src="${commodityOne.image}" alt="" title="" border="0"/></div>
+                        </div>
                         <div class="specifications">
-                            生成厂商: <span class="blue"></span><br/>
-                            商品编号: <span class="blue"></span><br/>
-                            总数量: <span class="blue"></span><br/>
-                            剩余数量: <span class="blue"></span><br/>
-                            上架时间: <span class="blue"></span>
+                            生成厂商: <span class="blue" th:text="${commodityOne.manufacturer}"></span><br/>
+                            商品编号: <span class="blue" th:text="${commodityOne.commodityId}"></span><br/>
+                            总数量: <span class="blue" th:text="${commodityOne.commodityAmount}"></span><br/>
+                            剩余数量: <span class="blue" th:text="${commodityOne.commodityLeaveNum}"></span><br/>
+                            上架时间: <span class="blue"
+                                        th:text="${#dates.format(commodityOne.regTime,'yyyy-MM-dd')}"></span>
                             <div class="prod_price_big"><span class="reduce"></span> <span
                                     class="price"></span></div>
-                            <a href="#" class="addtocart">添加到购物车</a>
+                            <a th:href="@{addShopCar(commodityId=${commodityOne.commodityId})}"
+                               class="addtocart">添加到购物车</a>
                         </div>
                     </div>
                     <div class="bottom_prod_box_big"></div>
                 </div>
                 <div class="center_title_bar">商品描述</div>
-                <div class="prod_box_big">
+                <div class="prod_box_big" th:text="${commodityOne.commodityDepict}">
                 </div>
             </div>
             <!-- end of center content -->

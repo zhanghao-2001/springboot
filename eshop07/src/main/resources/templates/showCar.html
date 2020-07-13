@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -23,7 +23,7 @@
                 <li class="divider"></li>
                 <li><a href="#" class="nav2">在线购物</a></li>
                 <li class="divider"></li>
-                <li><a href="#" class="nav5">我的购物车</a></li>
+                <li><a href="showCar" class="nav5">我的购物车</a></li>
                 <li class="divider"></li>
                 <li><a href="#" class="nav4">用户信息</a></li>
                 <li class="divider"></li>
@@ -47,17 +47,12 @@
         <div class="left_content">
             <div class="title_box">商品分类</div>
             <ul class="left_menu">
-                <li class="odd">
-                    <a href="showByClass.action?commodityClassID=${commodityClass.commodityClassId}">
+                <li class="odd" th:each="commodityClassTemp:${commodityclassList}">
+                    <a th:href="@{queryCommodityClass(commodityClassid=${commodityClassTemp.commodityClassid})}"
+                       th:text="${commodityClassTemp.commodityClassName}">
                     </a>
                 </li>
-                <li class="even">
-                    <a href="showByClass.action?commodityClassID=${commodityClass.commodityClassId}">
-                    </a>
-                </li>
-                </s:else>
-                </s:iterator>
-                <li class="odd"></li>
+
             </ul>
             <div class="banner_adds">
 
@@ -77,12 +72,13 @@
                             <td width="119">商品价格</td>
                             <td width="119">移除该商品</td>
                         </tr>
-                        <tr>
-                            <td width="147"></td>
-                            <td width="144"></td>
-                            <td width="124"></td>
-                            <td width="119"></td>
-                            <td width="119"><a href="deleteFromCar.action?commodityID=${com.commodityId}">移除</a></td>
+                        <tr th:each="commodityTemp:${commodityList}">
+                            <td width="147" th:text="${commodityTemp.commodityId}"></td>
+                            <td width="144" th:text="${commodityTemp.commodityName}"></td>
+                            <td width="124" th:text="${commodityTemp.manufacturer}"></td>
+                            <td width="119" th:text="${commodityTemp.commodityPrice}"></td>
+                            <td width="119"><a
+                                    th:href="@{deleteShopCar(commodityId=${commodityTemp.commodityId})}">移除</a></td>
                         </tr>
                         </s:else>
                     </table>

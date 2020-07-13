@@ -433,9 +433,17 @@ ul.left_menu li.even a:hover, ul.left_menu li.odd a:hover {
     color: #064E5A;
 }
 
+
+
 .product_img {
     padding: 5px 0 5px 0;
 }
+
+.product_img img{
+    width: 80px;
+    height: 60px;
+}
+
 
 .prod_price {
     padding: 5px 0 5px 0;
@@ -660,6 +668,11 @@ a.prod_details {
     padding: 5px 0 5px 0;
     font-weight: bold;
     font-size: 14px;
+}
+
+.product_title_big img{
+    width: 100px;
+    height: 80px;
 }
 
 .specifications {

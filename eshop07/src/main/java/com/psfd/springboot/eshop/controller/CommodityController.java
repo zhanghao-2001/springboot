@@ -61,7 +61,7 @@ public class CommodityController {
 
     @RequestMapping("/addCommodity")
     @ResponseBody
-    public String addCommodity(Commodity commodity, @RequestParam("uploadImage") MultipartFile uploadImage, String commodityClassID) {
+    public String addCommodity(Commodity commodity, @RequestParam("uploadImage") MultipartFile uploadImage, String commodityClassID, HttpServletRequest request) {
         System.out.println("uploadImage = " + uploadImage);
         String originalFilename = uploadImage.getOriginalFilename();
         System.out.println("originalFilename = " + originalFilename);
@@ -81,11 +81,10 @@ public class CommodityController {
             }
             image = savePath + "/" + originalFilename;
             uploadImage.transferTo(new File(image));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        commodity.setImage(image);
+        commodity.setImage("http://localhost:" + request.getServerPort() + "/" + request.getContextPath() + "/upload/" + originalFilename);
         commodity.setRegTime(new Date());
         commodity.setCommodityLeaveNum(commodity.getCommodityAmount());
         commodityService.addCommodity(commodity);

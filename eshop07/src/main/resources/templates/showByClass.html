@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <script type="text/javascript" src="js/boxOver.js"></script>
 </head>
 <body>
@@ -22,7 +22,7 @@
                 <li class="divider"></li>
                 <li><a href="#" class="nav2">在线购物</a></li>
                 <li class="divider"></li>
-                <li><a href="#" class="nav5">我的购物车</a></li>
+                <li><a href="showCar" class="nav5">我的购物车</a></li>
                 <li class="divider"></li>
                 <li><a href="#" class="nav4">用户信息</a></li>
                 <li class="divider"></li>
@@ -38,7 +38,7 @@
         </div><!-- end of menu tab -->
 
         <div class="crumb_navigation">
-            导航: <span class="current">首页>></span>
+            导航: <span class="current" th:text="'首页&gt;&gt;'+${commodityclassOne.commodityClassName}"></span>
 
         </div>
 
@@ -46,52 +46,58 @@
         <div class="left_content">
             <div class="title_box">商品分类</div>
             <ul class="left_menu">
-                        <li class="odd">
-                            <a href="#">
-                            </a>
-                        </li>
-                        <li class="even">
-                            <a href="#">
-                            </a>
-                        </li>
+                <li class="odd" th:each="commodityClassTemp:${commodityclassList}">
+                    <a href="#"
+                       th:href="@{queryCommodityClass(commodityClassid=${commodityClassTemp.commodityClassid})}"
+                       th:text="${commodityClassTemp.commodityClassName}"
+                    >
+                    </a>
+                </li>
+
                 <li class="odd"></li>
             </ul>
             <div class="banner_adds">
 
-                <a href="#"></a>     </div>
+                <a href="#"></a></div>
 
 
         </div><!-- end of left content -->
 
 
         <div class="center_content">
-            <div class="center_title_bar">${commodityClass.commodityClassName}</div>
-                <div class="prod_box">
-                    <div class="top_prod_box"></div>
-                    <div class="center_prod_box">
-                        <div class="product_title"><a href="#">${commodity.commodityName}</a></div>
-                        <div class="product_img"><a href="#"><img src="" alt="" title="" border="0" /></a></div>
-                        <div class="prod_price"><span class="reduce"></span> <span class="price">${commodity.fcPrice}</span></div>
+            <div class="center_title_bar" th:text="${commodityclassOne.commodityClassName}"></div>
+            <div class="prod_box" th:each="commodityTemp:${commodityList}">
+                <div class="top_prod_box"></div>
+                <div class="center_prod_box">
+                    <div class="product_title"><a href="#" th:text="${commodityTemp.commodityName}"></a></div>
+                    <div class="product_img"><a href="#"><img th:src="${commodityTemp.image}" alt="" title=""
+                                                              border="0"/></a></div>
+                    <div class="prod_price"><span class="reduce" th:text="${commodityTemp.commodityPrice}"></span> <span
+                            class="price" th:text="${commodityTemp.fcPrice}"></span>
                     </div>
-                    <div class="bottom_prod_box"></div>
-                    <div class="prod_details_tab">
-                        <a href="#" title="header=[添加到购物车] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" title="" border="0" class="left_bt" /></a>
-                        <a href="showCommodity.action?commodityID=${commodity.commodityId}" class="prod_details">详细</a></div>
                 </div>
-            </s:iterator>
+                <div class="bottom_prod_box"></div>
+                <div class="prod_details_tab">
+                    <a href="#" title="header=[添加到购物车] body=[&nbsp;] fade=[on]"><img src="img/cart.gif" alt=""
+                                                                                     title="" border="0"
+                                                                                     class="left_bt"/></a>
+                    <a th:href="@{showdetails(commodityId=${commodityTemp.commodityId})}" class="prod_details">详细</a>
+                </div>
+            </div>
         </div><!-- end of center content -->
 
         <div class="right_content">
             <div class="shopping_cart">
                 <div class="cart_title">购物车</div>
 
-                <div class="cart_icon"><a href="#" title=""><img src="images/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
+                <div class="cart_icon"><a href="#" title=""><img src="img/shoppingcart.png" alt="" title=""
+                                                                 width="48" height="48" border="0"/></a></div>
             </div>
             <div class="title_box">用户登录</div>
             <div class="border_box">
-                <p>用户名：<input name="username" type="text" size="15" /></p>
-                <p>密&nbsp;&nbsp;&nbsp;码：<input name="username" type="password" size="15" /></p>
-                <p><input name="提交" type="submit" value="登录" /><input name="重置" type="reset" value="重置" />
+                <p>用户名：<input name="username" type="text" size="15"/></p>
+                <p>密&nbsp;&nbsp;&nbsp;码：<input name="username" type="password" size="15"/></p>
+                <p><input name="提交" type="submit" value="登录"/><input name="重置" type="reset" value="重置"/>
                 </p>
             </div>
 
@@ -103,10 +109,8 @@
     </div><!-- end of main content -->
 
 
-
     <div class="footer"></div>
-
-
 </div>
 </body>
+
 </html>

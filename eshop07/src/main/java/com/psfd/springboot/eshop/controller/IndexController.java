@@ -52,8 +52,12 @@ public class IndexController {
     }
 
     @RequestMapping("/showCar")
-    public ModelAndView showCar(ModelAndView modelAndView) {
+    public ModelAndView showCar(ModelAndView modelAndView, HttpSession session) {
         List<Commodityclass> commodityclassList = commodityclassService.list();
+        List<Commodity> commodityList = (List<Commodity>) session.getAttribute("commodityList");
+        if (commodityList != null) {
+            modelAndView.addObject("commodityList", session.getAttribute("commodityList"));
+        }
         modelAndView.setViewName("showCar");
         modelAndView.addObject("commodityclassList", commodityclassList);
         return modelAndView;
@@ -83,9 +87,11 @@ public class IndexController {
             commodityList.add(commodityOne);
         } else {
             commodityList.add(commodityOne);
+            session.setAttribute("commodityList", commodityList);
         }
         modelAndView.setViewName("showCar");
         modelAndView.addObject("commodityclassList", commodityclassList);
+        modelAndView.addObject("commodityList", session.getAttribute("commodityList"));
         return modelAndView;
     }
 
@@ -101,6 +107,7 @@ public class IndexController {
         session.setAttribute("commodityList", commodityList);
         modelAndView.addObject("commodityclassList", commodityclassList);
         modelAndView.setViewName("showCar");
+        modelAndView.addObject("commodityList", session.getAttribute("commodityList"));
         return modelAndView;
     }
 

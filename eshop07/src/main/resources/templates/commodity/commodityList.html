@@ -50,14 +50,10 @@
     </TR>
     <TR>
         <TD class="forumrow" height=24 colspan="10" align="center">
-            <a href="#">首页</a>
-            <a href="#">上一页</a>
-            <EM>首页</EM>
-            <EM>上一页</EM>
-            <a href="#">下一页</a>
-            <a href="#">尾页</a>
-            <EM>下一页</EM>
-            <EM>尾页</EM>
+            <a th:href="@{commodityPage(page=1)}" id="first">首页</a>
+            <a th:href="@{commodityPage(page=${page}-1)}" id="prev">上一页</a>
+            <a th:href="@{commodityPage(page=${page}+1)}" id="next">下一页</a>
+            <a th:href="@{commodityPage(page=${pageCount})}" id="last">尾页</a>
         </TD>
     </TR>
     </TBODY>

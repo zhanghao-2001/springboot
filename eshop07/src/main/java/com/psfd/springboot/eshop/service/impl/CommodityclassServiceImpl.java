@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author admin
@@ -16,5 +16,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CommodityclassServiceImpl extends ServiceImpl<CommodityclassMapper, Commodityclass> implements ICommodityclassService {
+
 
 }

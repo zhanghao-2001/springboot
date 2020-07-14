@@ -21,5 +21,5 @@ public interface CommodityMapper extends BaseMapper<Commodity> {
 
     void addCommodity(Commodity commodity);
 
-    List<Commodity> queryAllCommodity();
+    List<Commodity> queryAllCommodity(Integer page);
 }

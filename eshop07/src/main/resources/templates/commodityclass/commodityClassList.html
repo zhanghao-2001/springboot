@@ -44,14 +44,10 @@
     </tr>
     <TR>
         <TD class=forumrow height=24 colspan="2" align="center">
-            <a href="findAllCommodityClass.action?currentPage=1">首页</a>
-            <a href="findAllCommodityClass.action?currentPage=${currentPage - 1}">上一页</a>
-            <EM>首页</EM>
-            <EM>上一页</EM>
-            <a href="findAllCommodityClass.action?currentPage=${currentPage + 1}">下一页</a>
-            <a href="findAllCommodityClass.action?currentPage=${page.totalPage}">尾页</a>
-            <EM>下一页</EM>
-            <EM>尾页</EM>
+            <a th:href="@{commodityclassPage(page=1)}" id="first">首页</a>
+            <a th:href="@{commodityclassPage(page=${page}-1)}" id="prev">上一页</a>
+            <a th:href="@{commodityclassPage(page=${page}+1)}" id="next">下一页</a>
+            <a th:href="@{commodityclassPage(page=${pageCount})}" id="last">尾页</a>
         </TD>
     </TR>
     </TBODY>
@@ -62,4 +58,10 @@
 </TABLE>
 <BR>
 </BODY>
+<script src="../js/jquery-3.4.1.min.js">
+</script>
+<script>
+
+
+</script>
 </HTML>

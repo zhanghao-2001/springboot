@@ -25,7 +25,7 @@
     </insert>
 
     <select id="queryAllCommodity" resultMap="CommodityMap">
-        select * from commodity
+        select * from commodity limit #{page},2
     </select>
 
     <select id="getCommodityClass" resultType="com.psfd.springboot.eshop.domain.Commodityclass">

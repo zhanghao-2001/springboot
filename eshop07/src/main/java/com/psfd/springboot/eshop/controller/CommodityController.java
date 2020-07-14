@@ -1,6 +1,8 @@
 package com.psfd.springboot.eshop.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.psfd.springboot.eshop.domain.Commodity;
 import com.psfd.springboot.eshop.domain.Commodityclass;
 import com.psfd.springboot.eshop.service.ICommodityService;
@@ -52,10 +54,17 @@ public class CommodityController {
 
     @RequestMapping("/queryAllCommodity")
     public ModelAndView queryAllCommodity(ModelAndView modelAndView) {
-        List<Commodity> commodityList = commodityService.queryAllCommodity();
+        Integer count = commodityService.count();
+        Integer pageCount = count / 2;
+        if (count % 2 != 0) {
+            pageCount = pageCount + 1;
+        }
+        List<Commodity> commodityList = commodityService.queryAllCommodity((1 - 1) * 0);
         System.out.println("commodityList = " + commodityList);
         modelAndView.setViewName("commodity/commodityList");
         modelAndView.addObject("commodityList", commodityList);
+        modelAndView.addObject("pageCount", pageCount);
+        modelAndView.addObject("page", 1);
         return modelAndView;
     }
 
@@ -97,4 +106,30 @@ public class CommodityController {
         commodityService.removeById(commodity.getCommodityId());
         return "删除成功";
     }
+
+
+    @RequestMapping("/commodityPage")
+    public ModelAndView page(String page, ModelAndView modelAndView) {
+        Integer count = commodityService.count();
+        Integer pageCount = count / 2;
+        if (count % 2 != 0) {
+            pageCount = pageCount + 1;
+        }
+
+        if (pageCount <= Integer.parseInt(page)) {
+            modelAndView.addObject("page", pageCount);
+            page = pageCount.toString();
+        } else if (Integer.parseInt(page) == 0) {
+            modelAndView.addObject("page", 1);
+            page = "1";
+        }
+        List<Commodity> commodityList = commodityService.queryAllCommodity((Integer.parseInt(page) - 1) * 2);
+        modelAndView.setViewName("commodity/commodityList");
+        modelAndView.addObject("commodityList", commodityList);
+        modelAndView.addObject("page", page);
+        modelAndView.addObject("pageCount", pageCount);
+        return modelAndView;
+    }
+
+
 }

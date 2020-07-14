@@ -82,7 +82,7 @@
                 </div>
                 <div class="bottom_prod_box"></div>
                 <div class="prod_details_tab">
-                    <a href="#"
+                    <a th:href="@{addShopCar(commodityId=${commodityTemp.commodityId})}"
                        title="header=[添加到购物车] body=[&nbsp;] fade=[on]"><img src="img/cart.gif" alt="" title=""
                                                                             border="0" class="left_bt"/></a>
                     <a th:href="@{showdetails(commodityId=${commodityTemp.commodityId})}" class="prod_details">详细</a>

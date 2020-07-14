@@ -28,7 +28,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     }
 
     @Override
-    public List<Commodity> queryAllCommodity() {
-        return commodityMapper.queryAllCommodity();
+    public List<Commodity> queryAllCommodity(Integer page) {
+        return commodityMapper.queryAllCommodity(page);
     }
 }

@@ -5,6 +5,7 @@ import com.psfd.springboot.eshop.domain.Commodity;
 import com.psfd.springboot.eshop.domain.Commodityclass;
 import com.psfd.springboot.eshop.service.ICommodityService;
 import com.psfd.springboot.eshop.service.ICommodityclassService;
+import com.psfd.springboot.eshop.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class IndexController {
 
     @Autowired
     private ICommodityService commodityService;
+
 
     @RequestMapping({"/", "index"})
     public ModelAndView index(ModelAndView modelAndView) {
@@ -110,6 +112,18 @@ public class IndexController {
         modelAndView.addObject("commodityList", session.getAttribute("commodityList"));
         return modelAndView;
     }
+
+
+    @RequestMapping("/registerUser")
+    public ModelAndView registerUser(ModelAndView modelAndView) {
+        List<Commodityclass> commodityclassList = commodityclassService.list();
+        modelAndView.addObject("commodityclassList", commodityclassList);
+        modelAndView.setViewName("registerUser");
+        return modelAndView;
+    }
+
+
+
 
 
 }

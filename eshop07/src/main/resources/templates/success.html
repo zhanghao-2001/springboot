@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="hidden" th:value="${jumpAddress}" id="input1">
+<div th:text="${message}"></div>
+</body>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    setInterval(function () {
+        window.location = $("#input1").val();
+        alert("成功");
+    }, 500)
+</script>
+</html>

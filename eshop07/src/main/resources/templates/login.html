@@ -7,7 +7,7 @@
     <LINK href="css/newhead.css" type=text/css rel=stylesheet>
 </head>
 <BODY bgColor=#eef8e0 leftMargin=0 topMargin=0 MARGINWIDTH="0" MARGINHEIGHT="0">
-<FORM name="adminlogin" action="" method="post">
+<FORM name="adminlogin" action="loginCheck" method="post">
     <TABLE cellSpacing=0 cellPadding=0 width=1004 border=0>
         <TBODY>
         <TR>
@@ -71,7 +71,8 @@
                                width=127></TD>
             <TD rowSpan=3><IMG height=180 alt="" src="img/crm_16.gif"
                                width=24></TD>
-            <TD><a id="inputsubmit" href="#"><img src="img/crm_17.gif"></a>
+            <TD><INPUT title=登录后台 type=image height=48 alt="" width=86
+                       src="img/crm_17.gif" name=image></a></TD>
             <TD><IMG height=48 alt="" src="img/crm_18.gif" width=21></TD>
             <TD colSpan=2><A href="#"><IMG
                     title=返回首页 height=48 alt="" src="img/crm_19.gif" width=84
@@ -87,7 +88,7 @@
                                width=332></TD>
         </TR>
         <TR>
-            <TD colSpan=2><IMG height=57 alt="" src="../img/crm_24.gif"
+            <TD colSpan=2><IMG height=57 alt="" src="img/crm_24.gif"
                                width=332></TD>
         </TR>
         <TR>
@@ -119,24 +120,6 @@
             return false;
         }
     }
-
-    // $("#inputsubmit").click(function () {
-    //         if (check()) {
-    //             $.post("login", {
-    //                 "username": $("#username").val(),
-    //                 "password": $("#password").val()
-    //             }, function (data) {
-    //                 console.log(data);
-    //                 if (data === "1") {
-    //                     window.location = "index";
-    //                 } else {
-    //                     alert("用户密码或密码有误");
-    //                 }
-    //             })
-    //         }
-    //
-    //     }
-    // )
 
 
 </script>

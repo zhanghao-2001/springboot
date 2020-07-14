@@ -2,6 +2,7 @@ package com.psfd.springboot.eshop.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.psfd.springboot.eshop.domain.Commodity;
 import com.psfd.springboot.eshop.domain.User;
 import com.psfd.springboot.eshop.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,8 @@ public class UserController {
         modelAndView.addObject("userList", userList);
         return modelAndView;
     }
+
+
 
 
 }

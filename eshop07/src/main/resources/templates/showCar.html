@@ -70,19 +70,22 @@
                             <td width="144">商品名称</td>
                             <td width="124">生产厂商</td>
                             <td width="119">商品价格</td>
+                            <td width="60">商品数量</td>
                             <td width="119">移除该商品</td>
                         </tr>
                         <tr th:each="commodityTemp:${commodityList}">
                             <td width="147" th:text="${commodityTemp.commodityId}"></td>
                             <td width="144" th:text="${commodityTemp.commodityName}"></td>
                             <td width="124" th:text="${commodityTemp.manufacturer}"></td>
-                            <td width="119" th:text="${commodityTemp.commodityPrice}"></td>
+                            <td width="119"
+                                th:text="${commodityTemp.commodityPrice}*${nums.get(commodityTemp.commodityId)}"></td>
+                            <td width="119" th:text="${nums.get(commodityTemp.commodityId)}"></td>
                             <td width="119"><a
                                     th:href="@{deleteShopCar(commodityId=${commodityTemp.commodityId})}">移除</a></td>
                         </tr>
-                        </s:else>
                     </table>
-                    <div align="right"><a href="#" class="addtocart">进入结算中心</a></div>
+                    <div align="right"><a th:href="@{payment}"
+                                          class="addtocart">进入结算中心</a></div>
                 </div>
                 <div class="bottom_prod_box_big"></div>
             </div>

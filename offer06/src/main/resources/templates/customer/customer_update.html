@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/oa.css}" rel="stylesheet" type="text/css">
+    <script language="javascript" th:src="@{/js/public.js}"></script>
+    <title>更新客户信息</title>
+</head>
+<body>
+<center>
+    <form th:action="@{customerUpdate.do(current = ${current})}" method="post">
+        <input type="hidden" name="id" th:value="${customer.getId()}">
+        <TABLE class="tableEdit" border="0" cellspacing="1" cellpadding="0" style="width:580px;">
+            <TBODY>
+            <TR>
+                <!-- 这里是添加、编辑界面的标题 -->
+                <td align="center" class="tdEditTitle" th:if="${status != 'query'}">更新客户信息</TD>
+                <td align="center" class="tdEditTitle" th:if="${status == 'query'}">客户查询结果</TD>
+            </TR>
+            <TR>
+                <td>
+                    <!-- 主输入域开始 -->
+                    <table class="tableEdit" style="width:580px;" cellspacing="0" border="0" cellpadding="0">
+                        <tr>
+                            <td class="tdEditLabel">客户名称</td>
+                            <td class="tdEditContent"><input type="text" name="name" th:value="${customer.name}"></td>
+                            <td class="tdEditLabel">联系电话</td>
+                            <td class="tdEditContent"><input type="text" name="phone" th:value="${customer.phone}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEditLabel">联系地址</td>
+                            <td class="tdEditContent"><input type="text" name="address" th:value="${customer.address}">
+                            </td>
+                            <td class="tdEditLabel">联系人</td>
+                            <td class="tdEditContent"><input type="text" name="relationman"
+                                                             th:value="${customer.relationman}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEditLabel">其他</td>
+                            <td class="tdEditContent" colspan="3"><input type="text" name="otherinfo"
+                                                                         th:value="${customer.otherinfo}"></td>
+                        </tr>
+                    </table>
+                    <!-- 主输入域结束 -->
+                </td>
+            </TR>
+            </TBODY>
+        </TABLE>
+
+        <TABLE>
+            <TR align="center">
+                <TD colspan="3" bgcolor="#EFF3F7">
+                    <input type="submit" name="saveButton"
+                           class="MyButton" value="更新客户信息">
+                    <input type="button" class="MyButton"
+                           value="关闭窗口" onclick="window.close()" th:if="${status != 'query'}">
+                    <input type="button" class="MyButton"
+                           value="返回" onclick="window.close()" th:if="${status == 'query'}">
+                </TD>
+            </TR>
+        </TABLE>
+    </form>
+</center>
+</body>
+</html>

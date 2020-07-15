@@ -28,7 +28,7 @@
 //label:  button caption - Beschriftung des Buttons
 //action: javascript on MouseUp event - Javascript beim onMouseUp event
 function b_addButton(img, label, action) {
-  this.img[this.img.length]=img;
+  this.src[this.src.length]=img;
   this.lbl[this.lbl.length]=label;
   this.act[this.act.length]=action;
   this.sta[this.sta.length]=0;

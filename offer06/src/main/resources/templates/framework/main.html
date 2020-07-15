@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>报价管理系统</title>
+    <TITLE>报价管理系统首页</TITLE>
     <style type="text/css">
         <!--
         a {
@@ -145,54 +145,20 @@
 </head>
 <body>
 
-<table width="681" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:120px">
+<table width="681" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:20px">
     <tr>
-        <td width="122" height="259" align="center" valign="bottom">&nbsp;</td>
-        <td width="441" th:background="@{/images/login_2.gif}">
-            <form method="post" action="loginRegister.do">
-                <table width="326" height="221" border="0" align="center" cellpadding="2" cellspacing="0">
-                    <tr>
-                        <td height="25" colspan="2" align="left">
-                            <div align="center"><span class="STYLE9">报价管理系统</span></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="25" colspan="2" align="left">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="68" height="30" align="left">用户名：</td>
-                        <td width="279"><input name="username" type="TEXT" th:background="@{/images/login_6.gif}"
-                                               style="border:solid 1px #27B3FE; height:20px; background-color:#FFFFFF"
-                                               id="UserName" size="25"></td>
-                    </tr>
-                    <tr>
-                        <td height="30" align="left">密码：</td>
-                        <td><input name="password" TYPE="PASSWORD" th:background="@{/images/login_6.gif}"
-                                   style="border:solid 1px #27B3FE; height:20px; background-color:#FFFFFF"
-                                   id="Password" size="26"></td>
-                    </tr>
-                    <tr>
-                        <td height="40" colspan="2" align="center"><img th:src="@{/images/tip.gif}" width="16"
-                                                                        height="16">
-                            请勿非法登录！
-                        </td>
-                    <tr>
-                        <td colspan="2" align="center"><input type="submit" name="submit"
-                                                              th:background="@{/images/login_5.gif}"
-                                                              value=" 登  录 ">
-                            &nbsp;
-                            <input type="reset" name="Submit" th:background="@{/images/login_5.gif}"
-                                   value=" 取  消 "></td>
-                    <tr>
-                        <td height="5" colspan="2"></td>
-                    </tr>
-                </table>
-            </form>
-        </td>
-        <td width="118">&nbsp;</td>
+        <td align="center"><span class="STYLE9">欢迎使用报价管理系统</span></td>
     </tr>
     <tr>
-        <td height="161" colspan="3"></td>
+        <td>
+            <p>&nbsp;&nbsp;报价管理系统可以分为五个功能模块，分别是客户管理模块、产品管理模块、订单管理模块、报价管理模块以及系统用户管理模块，其中各功能模块的具体说明如下。</p>
+            <p>客户管理模块：该模块主要用来管理客户信息，包括客户的名称、联系电话、联系地址、联系人等信息。</p>
+            <p>产品管理模块：该模块主要用来管理产品类别和产品信息，包括产品的名称、产品的单位、产品的价格等信息。</p>
+            <p>订单管理模块：该模块主要用来管理订单信息，包括下单客户名称、产品名称、产品数量等信息。</p>
+            <p>报价管理模块：该模块主要用来管理报价信息，包括客户名称、产品名称、报价人、报价时间等信息。</p>
+            <p>系统用户管理模块：该模块用来管理系统用户信息，包括用户名、用户级别、用户密码等信息。</p>
+        </td>
+    <tr>
     </tr>
 </table>
 </body>

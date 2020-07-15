@@ -3,17 +3,37 @@
 <mapper namespace="com.psfd.springboot.eshop.dao.OrderformMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.psfd.springboot.eshop.domain.Orderform">
-        <id column="order_form_id" property="order_form_id" />
-        <result column="user_id" property="user_id" />
-        <result column="order_from_no" property="order_from_no" />
-        <result column="submit_time" property="submit_time" />
-        <result column="consignment_time" property="consignment_time" />
-        <result column="total_price" property="total_price" />
-        <result column="remark" property="remark" />
-        <result column="idaddress" property="idaddress" />
-        <result column="is_payoff" property="is_payoff" />
-        <result column="isConsignment" property="isConsignment" />
+    <resultMap id="OrderFormMap" type="com.psfd.springboot.eshop.domain.Orderform">
+        <id column="order_form_id" property="orderFormId"/>
+        <result column="order_from_no" property="orderFromNo"/>
+        <result column="submit_time" property="submitTime"/>
+        <result column="consignment_time" property="consignmentTime"/>
+        <result column="total_price" property="totalPrice"/>
+        <result column="remark" property="remark"/>
+        <result column="ipaddress" property="ipaddress"/>
+        <result column="is_payoff" property="isPayoff"/>
+        <result column="isConsignment" property="isConsignment"/>
+        <association property="user" column="user_id" select="getUser"
+                     javaType="com.psfd.springboot.eshop.domain.User">
+        </association>
     </resultMap>
+
+    <insert id="addOrderForm" useGeneratedKeys="true" keyProperty="orderFormId">
+        insert into orderform(user_id,order_from_no,submit_time,consignment_time,
+        total_price,remark,ipaddress,is_payoff,isConsignment)
+        value(#{user.userId},#{orderFromNo},#{submitTime},#{consignmentTime},#{totalPrice},#{remark},#{ipaddress},#{isPayoff},#{isConsignment})
+
+    </insert>
+    <select id="queryAllOrderForm" resultMap="OrderFormMap">
+        select * from orderform
+    </select>
+
+    <select id="getUser" resultType="com.psfd.springboot.eshop.domain.User">
+        select * from user where user_id=#{userId}
+    </select>
+
+
+
+
 
 </mapper>

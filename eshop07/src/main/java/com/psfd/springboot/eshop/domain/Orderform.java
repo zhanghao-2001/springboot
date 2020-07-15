@@ -26,6 +26,7 @@ public class Orderform implements Serializable {
     private Integer orderFormId;        //订单编号
 
 
+    @TableField("user_id")
     private User user;          //用户信息
 
     private String orderFromNo; //订单序号

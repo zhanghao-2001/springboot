@@ -37,6 +37,7 @@ public class UserOneController {
             modelAndView.setViewName("success");
             modelAndView.addObject("message", "登录成功");
             modelAndView.addObject("jumpAddress", "index");
+            user = userService.getOne(wrapper);
             session.setAttribute("user", user);
         } else {
             modelAndView.setViewName("login");

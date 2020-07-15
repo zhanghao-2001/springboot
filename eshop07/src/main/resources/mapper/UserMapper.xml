@@ -3,8 +3,8 @@
 <mapper namespace="com.psfd.springboot.eshop.dao.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.psfd.springboot.eshop.domain.User">
-        <id column="user_id" property="user_id" />
+    <resultMap id="UserMap" type="com.psfd.springboot.eshop.domain.User">
+        <id column="user_id" property="userId" />
         <result column="username" property="username" />
         <result column="password" property="password" />
         <result column="name" property="name" />
@@ -13,8 +13,8 @@
         <result column="phone" property="phone" />
         <result column="post" property="post" />
         <result column="email" property="email" />
-        <result column="reg_time" property="reg_time" />
-        <result column="reg_ip_address" property="reg_ip_address" />
+        <result column="reg_time" property="regTime" />
+        <result column="reg_ip_address" property="regIpAddress" />
     </resultMap>
 
 </mapper>

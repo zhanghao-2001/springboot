@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface OrderlistMapper extends BaseMapper<Orderlist> {
-
+    void addOrderList(Orderlist orderlist);
 }

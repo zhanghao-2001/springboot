@@ -1,13 +1,11 @@
 package com.psfd.springboot.eshop.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.psfd.springboot.eshop.domain.Commodity;
-import com.psfd.springboot.eshop.domain.Commodityclass;
-import com.psfd.springboot.eshop.domain.Orderform;
-import com.psfd.springboot.eshop.domain.User;
+import com.psfd.springboot.eshop.domain.*;
 import com.psfd.springboot.eshop.service.ICommodityService;
 import com.psfd.springboot.eshop.service.ICommodityclassService;
 import com.psfd.springboot.eshop.service.IOrderformService;
+import com.psfd.springboot.eshop.service.IOrderlistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +25,9 @@ public class IndexController {
 
     @Autowired
     private IOrderformService orderformService;
+
+    @Autowired
+    private IOrderlistService orderlistService;
 
 
     @RequestMapping({"/", "index"})
@@ -150,17 +151,48 @@ public class IndexController {
 
     @RequestMapping("/payment")
     public ModelAndView payment(HttpSession session, ModelAndView modelAndView) {
-        Orderform orderform = new Orderform();
-        orderform.setUser((User) session.getAttribute("user"));
+        User user = (User) session.getAttribute("user");
+        System.out.println("user = " + user);
+        List<Commodity> commodityList = (List<Commodity>) session.getAttribute("commodityList");
+        Map<Integer, Integer> nums = (Map<Integer, Integer>) session.getAttribute("nums");
+        if (nums != null && user != null) {
+            for (Commodity commodity : commodityList) {
+                Orderform orderform = new Orderform();
+                orderform.setUser(user);
+                orderform.setOrderFromNo(getRandom());
+                orderform.setSubmitTime(new Date());
+                orderform.setConsignmentTime(new Date());
+                orderform.setIpaddress("127.0.0.1");
+                orderform.setRemark("必须保证商品质量问题");
+                orderform.setTotalPrice(commodity.getCommodityPrice() * nums.get(commodity.getCommodityId()));
+                orderform.setIsPayoff(1);
+                orderform.setIsConsignment(1);
+                Orderlist orderlist = new Orderlist();
+                orderlist.setCommodity(commodity);
+                orderlist.setOrderForm(orderform);
+                orderlist.setAmount(nums.get(commodity.getCommodityId()));
+                orderformService.addOrderForm(orderform);
+                orderlistService.addOrderList(orderlist);
+            }
+        }
         List<Commodityclass> commodityclassList = commodityclassService.list();
         modelAndView.setViewName("showCar");
+        if (user == null) {
+            modelAndView.setViewName("login");
+        }
         modelAndView.addObject("commodityclassList", commodityclassList);
         return modelAndView;
     }
 
 
-    public Integer getRandom() {
-        return 1;
+    public String getRandom() {
+        Random r = new Random();
+        StringBuffer stringBuffer = new StringBuffer();
+        for (int i = 0; i < 10; i++) {
+            String string = r.nextInt(10) + "";
+            stringBuffer.append(string);
+        }
+        return stringBuffer.toString();
     }
 
 

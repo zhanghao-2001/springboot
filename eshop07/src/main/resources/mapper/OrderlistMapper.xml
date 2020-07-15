@@ -3,11 +3,14 @@
 <mapper namespace="com.psfd.springboot.eshop.dao.OrderlistMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.psfd.springboot.eshop.domain.Orderlist">
-        <id column="order_list_id" property="order_list_id" />
-        <result column="commodity_id" property="commodity_id" />
-        <result column="order_form_id" property="order_form_id" />
-        <result column="amount" property="amount" />
+    <resultMap id="OrderListMap" type="com.psfd.springboot.eshop.domain.Orderlist">
+        <id column="order_list_id" property="order_list_id"/>
+        <result column="amount" property="amount"/>
     </resultMap>
+
+    <insert id="addOrderList">
+        insert into orderlist(commodity_id,order_form_id,amount)
+        values(#{commodity.commodityId},#{orderForm.orderFormId},#{amount})
+    </insert>
 
 </mapper>

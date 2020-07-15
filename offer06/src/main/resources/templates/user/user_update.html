@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/oa.css}" rel="stylesheet" type="text/css">
+    <script language="javascript" th:src="@{/js/public.js}"></script>
+    <title>修改用户信息</title>
+</head>
+<body>
+<center>
+    <form th:action="@{userUpdate.do(current = ${current})}" method="post">
+        <input type="hidden" name="username" th:value="${user.getUsername()}">
+        <TABLE class="tableEdit" border="0" cellspacing="1" cellpadding="0" style="width:580px;">
+            <TBODY>
+            <TR>
+                <!-- 这里是添加、编辑界面的标题 -->
+                <td align="center" class="tdEditTitle">修改用户信息</TD>
+            </TR>
+            <TR>
+                <td>
+                    <!-- 主输入域开始 -->
+                    <table class="tableEdit" style="width:580px;" cellspacing="0" border="0" cellpadding="0">
+                        <tr>
+                            <td class="tdEditLabel">密码</td>
+                            <td class="tdEditContent">
+                                <input type="text" name="password" th:value="${user.getPassword()}">
+                            </td>
+                            <td class="tdEditLabel">级别</td>
+                            <td class="tdEditContent" colspan="3">
+                                <select name="grade">
+                                    <option th:value="${user.getGrade()}" th:if="${user.getGrade()} eq 'admin'"
+                                            th:text="${'管理员'}"></option>
+                                    <option th:value="${user.getGrade()}" th:if="${user.getGrade()} eq 'staff'"
+                                            th:text="${'普通员工'}"></option>
+                                    <option th:value="${user.getGrade()}" th:if="${user.getGrade()} eq 'client'"
+                                            th:text="${'客户'}"></option>
+                                    <option value="client">客户</option>
+                                    <option value="staff">普通员工</option>
+                                    <option value="admin">管理员</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </table>
+                    <!-- 主输入域结束 -->
+                </td>
+            </TR>
+            </TBODY>
+        </TABLE>
+
+        <TABLE>
+            <TR align="center">
+                <TD colspan="3" bgcolor="#EFF3F7">
+                    <input type="submit" name="saveButton"
+                           class="MyButton" value="保存用户信息">
+                    <input type="button" class="MyButton"
+                           value="关闭窗口" onclick="window.close()">
+                </TD>
+            </TR>
+        </TABLE>
+    </form>
+</center>
+</body>
+</html>

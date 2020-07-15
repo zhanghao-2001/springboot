@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/oa.css}" rel="stylesheet" type="text/css">
+    <script language="javascript" th:src="@{/js/public.js}"></script>
+    <title>更新报价信息</title>
+</head>
+<body>
+<center>
+    <form th:action="@{quotationUpdate.do(current = ${current})}" method="post">
+        <input type="hidden" name="quotationNO" th:value="${quotation.getQuotationNo()}">
+        <TABLE class="tableEdit" border="0" cellspacing="1" cellpadding="0" style="width:580px;">
+            <TBODY>
+            <TR>
+                <!-- 这里是添加、编辑界面的标题 -->
+                <td align="center" class="tdEditTitle">更新报价信息</TD>
+            </TR>
+            <TR>
+                <td>
+                    <!-- 主输入域开始 -->
+                    <table class="tableEdit" style="width:580px;" cellspacing="0" border="0" cellpadding="0">
+                        <tr>
+                            <td class="tdEditLabel">报价人</td>
+                            <td class="tdEditContent">
+                                <input type="text" name="quotationMan" th:value="${quotation.getQuotationMan()}">
+                            </td>
+                            <td class="tdEditLabel">客户名称</td>
+                            <td class="tdEditContent">
+                                <select name="customerId" data-placeholder="请选择客户名称">
+                                    <option label='请选择客户名称'></option>
+                                    <option th:each="list : ${customer}" th:value="${list.getId()}"
+                                            th:text="${list.getName()}"
+                                            th:selected="${list.getId() eq quotation.getCustomerId()}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEditLabel">产品名称</td>
+                            <td class="tdEditContent">
+                                <select name="productId" data-placeholder="请选择产品名称">
+                                    <option label='请选择产品名称'></option>
+                                    <option th:each="list : ${product}" th:value="${list.getProductid()}"
+                                            th:text="${list.getName()}"
+                                            th:selected="${list.getProductid() eq quotation.getProductId()}"></option>
+                                </select>
+                            </td>
+                            <td class="tdEditLabel">其他信息</td>
+                            <td class="tdEditContent"><input type="text" name="otherInfo"
+                                                             th:value="${quotation.getOtherInfo()}"></td>
+                        </tr>
+                    </table>
+                    <!-- 主输入域结束 -->
+                </td>
+            </TR>
+            </TBODY>
+        </TABLE>
+
+        <TABLE>
+            <TR align="center">
+                <TD colspan="3" bgcolor="#EFF3F7">
+                    <input type="submit" name="saveButton"
+                           class="MyButton" value="更新报价信息">
+                    <input type="button" class="MyButton"
+                           value="关闭窗口" onclick="window.close()">
+                </TD>
+            </TR>
+        </TABLE>
+    </form>
+</center>
+</body>
+</html>

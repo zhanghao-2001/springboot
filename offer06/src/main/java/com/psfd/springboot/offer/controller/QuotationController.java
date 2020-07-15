@@ -1,4 +1,4 @@
-package com.psfd.springboot.offer.dao;
+package com.psfd.springboot.offer.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -99,5 +99,56 @@ public class QuotationController {
     }
 
 
+    @RequestMapping("quotation/quotationUpdateSkip.do")
+    public ModelAndView quotationUpdateSkip(int id, int current) {
+        Quotation quotation = quotationService.getById(id);
+        ModelAndView m = new ModelAndView();
+        m.addObject("quotation", quotation);
+        m.addObject("customer", customerService.list());
+        m.addObject("product", productService.list());
+        m.addObject("current", current);
+        m.setViewName("quotation/quotation_update");
+        return m;
+    }
 
+
+    @RequestMapping("quotation/quotationUpdate.do")
+    public ModelAndView quotationUpdate(int current, Quotation quotation) {
+        quotationService.updateById(quotation);
+        return quotationList(current);
+    }
+
+    @RequestMapping("framework/quotationQuery.do")
+    public ModelAndView querySkip() {
+        ModelAndView m = new ModelAndView();
+        m.addObject("product", productService.list());
+        m.addObject("customer", customerService.list());
+        m.setViewName("quotation/quotation_query");
+        return m;
+    }
+
+    @RequestMapping("framework/quotationQueryRegister.do")
+    public ModelAndView query(Quotation quotation) {
+        Quotation temp = quotationService.getById(quotation.getQuotationNo());
+        ModelAndView m = new ModelAndView();
+        if (temp != null) {
+            if (temp.getCustomerId().equals(quotation.getCustomerId()) && temp.getOtherInfo().equals(quotation.getOtherInfo())
+                    && temp.getProductId().equals(quotation.getProductId()) && temp.getQuotationMan().equals(quotation.getQuotationMan())) {
+                IPage<Quotation> page = new Page<>();
+                List<Quotation> list = new ArrayList<>();
+                list.add(temp);
+                page.setTotal(list.size());
+                page.setRecords(list);
+                page.setCurrent(1);
+                page.setSize(5);
+                m.addObject("page", page);
+                m.addObject("product", productService.list());
+                m.addObject("customer", customerService.list());
+                m.setViewName("quotation/quotation_list");
+                return m;
+            }
+        }
+        m.setViewName("quotation/quotation_query");
+        return m;
+    }
 }

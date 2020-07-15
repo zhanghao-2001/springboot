@@ -34,7 +34,7 @@
 
 
             <!--  任务系统开始    -->
-            <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03">
+            <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03" th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
                 <tr>
                     <td height="29">
                         <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -51,7 +51,7 @@
                 </tr>
             </TABLE>
             <table id="subtree8" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
-                   cellspacing="0" class="left-table02">
+                   cellspacing="0" class="left-table02" th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
                 <tr>
                     <td width="9%" height="20"><img id="xiaotu1" th:src="@{/images/ico06.gif}" width="8"
                                                     height="12"/></td>
@@ -88,7 +88,7 @@
             </TABLE>
             <table id="subtree7" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
                    cellspacing="0" class="left-table02">
-                <tr>
+                <tr  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
                     <td width="9%" height="20"><img id="xiaotu3" th:src="@{/images/ico06.gif}" width="8"
                                                     height="12"/></td>
                     <td width="91%">
@@ -103,7 +103,7 @@
                            onClick="tupian('4');">产品类别查询</a>
                     </td>
                 </tr>
-                <tr>
+                <tr  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
                     <td width="9%" height="20"><img id="xiaotu5" th:src="@{/images/ico06.gif}" width="8"
                                                     height="12"/></td>
                     <td width="91%">
@@ -124,7 +124,7 @@
             <!--  消息系统结束    -->
 
 
-            <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03">
+            <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03"  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
                 <tr>
                     <td height="29">
                         <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -141,7 +141,7 @@
                 </tr>
             </TABLE>
             <table id="subtree1" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
-                   cellspacing="0" class="left-table02">
+                   cellspacing="0" class="left-table02"  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
                 <tr>
                     <td width="9%" height="20"><img id="xiaotu7" th:src="@{/images/ico06.gif}" width="8"
                                                     height="12"/></td>
@@ -175,8 +175,7 @@
 
             <table id="subtree2" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
                    cellspacing="0" class="left-table02">
-
-                <tr>
+                <tr  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
                     <td width="9%" height="20"><img id="xiaotu9" th:src="@{/images/ico06.gif}" width="8"
                                                     height="12"/></td>
                     <td width="91%"><a href="quotationList.do?current=1" target="main" class="left-font03"
@@ -193,7 +192,7 @@
             <!--  客户系统结束    -->
 
             <!--  人员系统开始    -->
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03" th:if="${session.grade} eq 'admin'">
                 <tr>
                     <td height="29">
                         <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -209,17 +208,17 @@
             </table>
 
             <table id="subtree3" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
-                   cellspacing="0" class="left-table02">
+                   cellspacing="0" class="left-table02"  th:if="${session.grade} eq 'admin'">
                 <tr>
                     <td width="9%" height="20"><img id="xiaotu11" th:src="@{/images/ico06.gif}" width="8"
                                                     height="12"/></td>
-                    <td width="91%"><a href="addstipend.do" target="main" class="left-font03"
+                    <td width="91%"><a href="userList.do?current=1" target="main" class="left-font03"
                                        onClick="tupian('11');">用户管理</a></td>
                 </tr>
                 <tr>
                     <td width="9%" height="20"><img id="xiaotu12" th:src="@{/images/ico06.gif}" width="8"
                                                     height="12"/></td>
-                    <td width="91%"><a href="stipend.do?action=liststipend" target="main" class="left-font03"
+                    <td width="91%"><a href="userQuerySkip.do" target="main" class="left-font03"
                                        onClick="tupian('12');">用户查询</a></td>
                 </tr>
             </table>

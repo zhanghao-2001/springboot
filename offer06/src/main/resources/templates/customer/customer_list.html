@@ -65,8 +65,9 @@
                 <td align="center" vAlign="center" th:text="${list.getRelationman()}"></td>
                 <td align="center" vAlign="center" th:text="${list.getOtherinfo()}"></td>
                 <td align="center" vAlign="center">
-                    <a th:href="@{/customer/customerDelete.do(id = ${list.getId()},current=${page.getCurrent()})}">删除</a>
-                    <a th:href="@{/customer/customerUpdateSkip.do(id = ${list.getId()},current=${page.getCurrent()})}">修改</a>
+                    <a th:if="${session.grade} eq 'admin'" th:href="@{/customer/customerDelete.do(id = ${list.getId()},current=${page.getCurrent()})}">删除</a>
+                    <a th:if="${session.grade} eq 'admin'" th:href="@{/customer/customerUpdateSkip.do(id = ${list.getId()},current=${page.getCurrent()})}">修改</a>
+                    <div th:if="${session.grade} eq 'staff'">权限不足</div>
                 </td>
             </tr>
             <!-- 在列表数据为空的时候，要显示的提示信息 -->

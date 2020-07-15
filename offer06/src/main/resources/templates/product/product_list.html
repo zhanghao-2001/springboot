@@ -67,8 +67,9 @@
                 <td align="center" vAlign="center" th:text="${list.getQuantity()}"></td>
                 <td align="center" vAlign="center" th:text="${list.getOtherinfo()}"></td>
                 <td align="center" vAlign="center">
-                    <a th:href="@{/product/productDelete.do(id = ${list.getProductid()},current = ${page.getCurrent()})}">删除</a>
-                    <a th:href="@{/product/productUpdateSkip.do(id=${list.getProductid()},current=${page.getPages()})}">修改</a>
+                    <a th:if="${session.grade} eq 'admin'" th:href="@{/product/productDelete.do(id = ${list.getProductid()},current = ${page.getCurrent()})}">删除</a>
+                    <a th:if="${session.grade} eq 'admin'" th:href="@{/product/productUpdateSkip.do(id=${list.getProductid()},current=${page.getPages()})}">修改</a>
+                    <div th:if="${session.grade} eq 'staff'">权限不足</div>
                 </td>
             </tr>
             </s:iterator>

@@ -35,19 +35,21 @@ public class LoginController {
     }
 
     @RequestMapping("framework/loginRegister.do")
-    public ModelAndView login(String username, String password, HttpServletRequest request){
+    public ModelAndView login(User user, HttpServletRequest request){
         ModelAndView m = new ModelAndView();
         List<User> list = userService.list();
         boolean flag = false;
-        for (User user : list) {
-            if(user.getUsername().equals(username) && user.getPassword().equals((password))){
+        for (User temp : list) {
+            if(temp.getUsername().equals(user.getUsername()) && temp.getPassword().equals((user.getPassword()))){
+                user = temp;
                 flag = true;
                 break;
             }
         }
         if(flag){
             HttpSession session = request.getSession();
-            session.setAttribute("username",username);
+            session.setAttribute("grade",user.getGrade());
+            session.setAttribute("username",user.getUsername());
             m.setViewName("framework/back_index");
             return m;
         }else{

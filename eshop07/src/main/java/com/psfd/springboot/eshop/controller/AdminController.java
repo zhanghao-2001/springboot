@@ -5,11 +5,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.psfd.springboot.eshop.domain.Admin;
 import com.psfd.springboot.eshop.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -29,15 +32,24 @@ public class AdminController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public String login(Admin admin, HttpSession session) {
+    public String login(Admin admin, HttpSession session, HttpServletResponse response) {
         System.out.println("admin = " + admin);
         QueryWrapper<Admin> wrapper = new QueryWrapper<>();
         wrapper.eq("username", admin.getUsername());
         wrapper.eq("password", admin.getPassword());
         wrapper.select("admin_id");
         Integer count = adminService.count(wrapper);
-        Admin admin1 = adminService.getOne(wrapper);
-        session.setAttribute("adminId", admin1.getAdminId());
+        Admin adminOne = adminService.getOne(wrapper);
+        if (!StringUtils.isEmpty(admin.getUsername()) && !StringUtils.isEmpty(admin.getPassword()) && count == 1) {
+            session.setAttribute("admin", admin);
+            session.setAttribute("adminId", adminOne.getAdminId());
+            Cookie cookie = new Cookie("username", admin.getUsername());
+            Cookie cookie1 = new Cookie("password", admin.getPassword());
+            cookie.setMaxAge(2 * 60);
+            cookie1.setMaxAge(2 * 60);
+            response.addCookie(cookie);
+            response.addCookie(cookie1);
+        }
         return count.toString();
     }
 

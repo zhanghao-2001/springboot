@@ -87,6 +87,11 @@ public class IndexController {
 
     @RequestMapping("/addShopCar")
     public ModelAndView addShopCar(Commodity commodity, HttpSession session, ModelAndView modelAndView) {
+        boolean flag = shopCarCheck(session);
+        if (flag == false) {
+            modelAndView.setViewName("/login");
+            return modelAndView;
+        }
         List<Commodityclass> commodityclassList = commodityclassService.list();
         Commodity commodityOne = commodityService.getById(commodity.getCommodityId());
         Map<Integer, Commodity> commodityMap = (Map<Integer, Commodity>) session.getAttribute("commodityMap");
@@ -124,6 +129,14 @@ public class IndexController {
         return modelAndView;
     }
 
+    private boolean shopCarCheck(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+
     @RequestMapping("/deleteShopCar")
     public ModelAndView deleteShopCar(Commodity commodity, HttpSession session, ModelAndView modelAndView) {
         List<Commodity> commodityList = (List<Commodity>) session.getAttribute("commodityList");
@@ -155,7 +168,7 @@ public class IndexController {
         System.out.println("user = " + user);
         List<Commodity> commodityList = (List<Commodity>) session.getAttribute("commodityList");
         Map<Integer, Integer> nums = (Map<Integer, Integer>) session.getAttribute("nums");
-        if (nums != null && user != null) {
+        if (nums != null && user != null && commodityList != null) {
             for (Commodity commodity : commodityList) {
                 Orderform orderform = new Orderform();
                 orderform.setUser(user);
@@ -175,6 +188,8 @@ public class IndexController {
                 orderlistService.addOrderList(orderlist);
             }
         }
+        session.setAttribute("commodityMap", null);
+        session.setAttribute("commodityList", null);
         List<Commodityclass> commodityclassList = commodityclassService.list();
         modelAndView.setViewName("showCar");
         if (user == null) {

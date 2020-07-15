@@ -185,7 +185,7 @@ var bookmenu='<table width=90><tr><td id=bookType onMouseOver=overbg(bookType) o
 <tr><td id=book onMouseOver=overbg(book) onMouseOut=outbg(book)><a href=book.do?action=bookQuery>图书档案管理</a></td></tr>\
 </table>'
 var borrowmenu='<table width=60><tr><td id=Borrow onMouseOver=overbg(Borrow) onMouseOut=outbg(Borrow)><a href=bookBorrow.jsp>图书借阅</a></td></tr>\
-<tr><td id=renew onMouseOver=overbg(renew) onMouseOut=outbg(renew)><a href=bookRenew.jsp>图书续借</a></td></tr>\
+<tr><td id=renew onMouseOver=overbg(renew) onMouseOut=outbg(renew)><a href=bookRenew.html>图书续借</a></td></tr>\
 <tr><td id=giveback onMouseOver=overbg(giveback) onMouseOut=outbg(giveback)><a href=bookBack.jsp>图书归还</a></td></tr>\
 </table>'
 var querymenu='<table width=90><tr><td id=bookQuery onMouseOver=overbg(bookQuery) onMouseOut=outbg(bookQuery)><a href=book.do?action=bookifQuery>图书档案查询</a></td></tr>\

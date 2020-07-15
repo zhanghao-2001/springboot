@@ -2,7 +2,8 @@ package com.psfd.springboot.book.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.psfd.springboot.book.bean.BookType;
-import com.psfd.springboot.book.dao.BookTypeDao;
+import com.psfd.springboot.book.dao.IBookTypeDao;
+import com.psfd.springboot.book.service.IBookTypeService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,5 +14,5 @@ import javax.transaction.Transactional;
  */
 @Service
 @Transactional
-public class BookTypeServiceimpl  extends ServiceImpl<BookTypeDao, BookType> {
+public class BookTypeServiceimpl  extends ServiceImpl<IBookTypeDao, BookType> implements IBookTypeService {
 }

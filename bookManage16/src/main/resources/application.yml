@@ -1,33 +1,41 @@
 server:
   port: 8080
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/book?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: 123456
+    url: jdbc:mysql://localhost:3306/book?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
-  devtools:
-    restart:
-      enabled: true
-      additional-paths: src/main/java
-      exclude: WEB-INF/**
-  freemarker:
-    cache: false
+    ## thymeleaf
+    ## thymeleaf:
+    ## prefix: classpath:/templates/
+    ## suffix: .html
+  http:
+    encoding:
+      uri-encoding: UTF-8
+
+  resources:
+    static-locations: classpath:/static/
   thymeleaf:
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    content-type: text/html
     cache: false
 
 mybatis-plus:
-  mapper-locations: classpath:mapper/*.xml
-
-global-config:
-  db-config:
+  global-config:
+    db-config:
       id-type: auto
       field-strategy: NOT_EMPTY
       db-type: MYSQL
-
-configuration:
+  configuration:
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

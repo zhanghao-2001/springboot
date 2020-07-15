@@ -1,0 +1,67 @@
+<HTML lang="en" xmlns:th="http://www.thymeleaf.org">
+<HEAD>
+    <TITLE>欢迎进入系统后台</TITLE>
+    <META content="text/html; charset=UTF-8">
+    <LINK href="../css/Admin.css" rel=stylesheet>
+    <SCRIPT language=javascript src="../js/admin.js"></SCRIPT>
+
+    <STYLE type=text/css>
+        .STYLE1 {
+            FONT-WEIGHT: bold;
+            COLOR: #0099ff
+        }
+    </STYLE>
+
+</HEAD>
+<BODY><BR>
+<TABLE class="tableborder" cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+<TABLE cellSpacing=1 cellPadding=3 width="95%" align=center bgColor=#6ab6b6
+       border=0>
+    <TBODY>
+    <TR>
+        <TH colSpan=2 height=24>【商品种类列表】</TH>
+    </TR>
+    <TR>
+        <TD class="forumrow" width="30%" height=24>
+            <div align="center">商品种类编号</div>
+        </TD>
+        <TD class="forumrowhighlight" width="70%"
+            height=24>
+            <div align="center">商品种类名称</div>
+        </TD>
+    </TR>
+    <tr th:each="commodityClassTemp:${commodityClassList}">
+        <TD class="forumrow" height=24>
+            <div align="center" th:text="${commodityClassTemp.commodityClassid}"></div>
+        </TD>
+        <TD class=forumrowhighlight
+            height=24>
+            <div align="center" th:text="${commodityClassTemp.commodityClassName}"></div>
+        </TD>
+    </tr>
+    <TR>
+        <TD class=forumrow height=24 colspan="2" align="center">
+            <a th:href="@{commodityclassPage(page=1)}" id="first">首页</a>
+            <a th:href="@{commodityclassPage(page=${page}-1)}" id="prev">上一页</a>
+            <a th:href="@{commodityclassPage(page=${page}+1)}" id="next">下一页</a>
+            <a th:href="@{commodityclassPage(page=${pageCount})}" id="last">尾页</a>
+        </TD>
+    </TR>
+    </TBODY>
+</TABLE>
+<BR>
+<TABLE class="tableborder" cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+</BODY>
+<script src="../js/jquery-3.4.1.min.js">
+</script>
+<script>
+
+
+</script>
+</HTML>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="js/boxOver.js"></script>
+</head>
+</head>
+<body>
+
+<div id="main_container">
+    <div class="top_bar"></div>
+    <div id="header">
+        <!-- end of oferte_content-->
+    </div>
+
+    <div id="main_content">
+
+        <div id="menu_tab">
+            <div class="left_menu_corner"></div>
+            <ul class="menu">
+                <li><a href="index" class="nav1">首页</a></li>
+                <li class="divider"></li>
+                <li><a href="#" class="nav2">在线购物</a></li>
+                <li class="divider"></li>
+                <li><a href="showCar" class="nav5">我的购物车</a></li>
+                <li class="divider"></li>
+                <li><a href="#" class="nav4">用户信息</a></li>
+                <li class="divider"></li>
+                <li><a href="login" class="nav3">用户登录</a></li>
+                <li class="divider"></li>
+                <li><a href="registerUser" class="nav6">用户注册 </a></li>
+                <li class="divider"></li>
+                <li></li>
+                <li class="divider"></li>
+            </ul>
+
+            <div class="right_menu_corner"></div>
+        </div><!-- end of menu tab -->
+
+        <div class="crumb_navigation">
+            导航: <span class="current">首页</span>
+
+        </div>
+
+
+        <div class="left_content">
+            <div class="title_box">商品分类</div>
+            <ul class="left_menu">
+                <li class="odd" th:each="commodityClassTemp:${commodityclassList}">
+                    <a th:href="@{queryCommodityClass(commodityClassid=${commodityClassTemp.commodityClassid})}"
+                       th:text="${commodityClassTemp.commodityClassName}">
+                    </a>
+                </li>
+
+            </ul>
+            <div class="banner_adds">
+
+                <a href="#"></a></div>
+
+
+        </div>
+
+
+        <div class="center_content">
+            <div class="center_title_bar">最新商品</div>
+            <div class="prod_box" th:each="commodityTemp:${commodityList}">
+                <div class="top_prod_box"></div>
+                <div class="center_prod_box">
+                    <div class="product_title">
+                        <a href="showCommodity.action?commodityID=${commodity.commodityId}"
+                        >
+                        </a>
+                    </div>
+                    <div class="product_img"><a
+                            href="#"><img
+                            alt="" title=""
+                            border="0" th:src="${commodityTemp.image}"/></a></div>
+                    <div class="prod_price"><span class="reduce" th:text="${commodityTemp.commodityPrice}"></span> <span
+                            class="price" th:text="${commodityTemp.fcPrice}"></span></div>
+                </div>
+                <div class="bottom_prod_box"></div>
+                <div class="prod_details_tab">
+                    <a th:href="@{addShopCar(commodityId=${commodityTemp.commodityId})}"
+                       title="header=[添加到购物车] body=[&nbsp;] fade=[on]"><img src="img/cart.gif" alt="" title=""
+                                                                            border="0" class="left_bt"/></a>
+                    <a th:href="@{showdetails(commodityId=${commodityTemp.commodityId})}" class="prod_details">详细</a>
+                </div>
+            </div>
+        </div><!-- end of center content -->
+
+        <div class="right_content">
+            <div class="shopping_cart">
+                <div class="cart_title">购物车</div>
+
+                <div class="cart_icon"><a href="#" title=""><img src="img/shoppingcart.png" alt="" title=""
+                                                                 width="48" height="48" border="0"/></a></div>
+            </div>
+            <div class="title_box">用户登录</div>
+            <div class="border_box">
+                <p>用户名：<input name="username" type="text" size="15"/></p>
+                <p>密&nbsp;&nbsp;&nbsp;码：<input name="password" type="password" size="15"/></p>
+                <p><input name="提交" type="submit" value="登录"/><input name="重置" type="reset" value="重置"/>
+                </p>
+            </div>
+
+            <div class="border_box"></div>
+        </div>
+        <!-- end of right content -->
+
+
+    </div><!-- end of main content -->
+
+
+    <div class="footer"></div>
+
+
+</div>
+</body>
+</html>

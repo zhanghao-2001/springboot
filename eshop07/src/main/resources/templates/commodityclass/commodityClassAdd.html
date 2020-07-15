@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<SCRIPT language=javascript src="../js/admin.js"></SCRIPT>
+
+<STYLE type=text/css>
+    .STYLE1 {
+        FONT-WEIGHT: bold;
+        COLOR: #0099ff
+    }
+</STYLE>
+
+</HEAD>
+<BODY><BR>
+<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+<form action="" method="post">
+    <TABLE cellSpacing=1 cellPadding=3 width="95%" align=center bgColor=#6ab6b6
+           border=0>
+        <TBODY>
+        <TR>
+            <TH colSpan=2 height=24>【新增商品种类】</TH>
+        </TR>
+        <TR>
+            <TD class="forumrow" width="30%" height=24>
+                <div align="right">商品种类名称：</div>
+            </TD>
+            <TD class=forumrowhighlight width="70%"
+                height=24><input type="text" name="commodityClassName" id="commodityClassName"></TD>
+        </TR>
+        <TR>
+            <TD class=forumrow height=24>
+                <div align="right"></div>
+            </TD>
+            <TD class="forumrowhighlight"
+                height=24><span class="forumrow">
+      <input type="button" value="提交" id="inputsubmit">
+      <input type="reset" value="重置">
+    </span></TD>
+        </TR>
+        </TBODY>
+    </TABLE>
+</form>
+<BR>
+<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+</BODY>
+<script src="../js/jquery-3.4.1.min.js">
+
+</script>
+<script>
+    $("#inputsubmit").click(function () {
+        if ($("#commodityClassName").val() != "") {
+            $.post("addCommodityClass", {
+                "commodityClassName": $("#commodityClassName").val()
+            }, function (data) {
+                console.log(data);
+                alert(data);
+            })
+        } else {
+            alert("商品种类名称不能为空");
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<LINK href="../css/Admin.css" rel=stylesheet>
+<SCRIPT language=javascript src="../js/admin.js"></SCRIPT>
+
+<STYLE type=text/css>
+    .STYLE1 {
+        FONT-WEIGHT: bold;
+        COLOR: #0099ff
+    }
+</STYLE>
+<BODY><BR>
+<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+<TABLE cellSpacing=1 cellPadding=3 width="95%" align=center bgColor=#6ab6b6
+       border=0>
+    <TBODY>
+    <TR>
+        <TH colSpan=9 height=24>【订单列表】
+        </TD>
+    </TR>
+    <TR>
+        <TD class=forumrow>订单编号</TD>
+        <TD class=forumrow>买家用户名</TD>
+        <TD class=forumrow>提交订单时间</TD>
+        <TD class=forumrow>发货时间</TD>
+        <TD class=forumrow>总金额</TD>
+        <TD class=forumrow>买家IP地址</TD>
+        <TD class=forumrow>买家是否付款</TD>
+        <TD class=forumrow>是否发货</TD>
+        <TD class=forumrow>操作</TD>
+    </TR>
+
+    <tr th:each="orderFormTemp:${orderFormList}">
+        <TD class=forumrow th:text="${orderFormTemp.orderFormId}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.user.name}"></TD>
+        <TD class=forumrow th:text="${#dates.format(orderFormTemp.submitTime,'yyyy-MM-dd')}"></TD>
+        <TD class=forumrow th:text="${#dates.format(orderFormTemp.consignmentTime,'yyyy-MM-dd')}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.totalPrice}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.ipaddress}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.isPayoff==1?'是':'否'}"></TD>
+        <TD class=forumrow th:text="${orderFormTemp.isConsignment==1?'是':'否'}"></TD>
+        <TD class=forumrow>付款&nbsp;发货</TD>
+    </tr>
+
+    </TBODY>
+</TABLE>
+<BR>
+<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+</BODY>
+</html>

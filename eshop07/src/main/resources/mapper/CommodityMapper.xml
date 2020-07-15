@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.psfd.springboot.eshop.dao.CommodityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="CommodityMap" type="com.psfd.springboot.eshop.domain.Commodity">
+        <id column="commodity_id" property="commodityId" />
+        <result column="commodiy_name" property="commodiy_name" />
+        <result column="manufacturer" property="manufacturer" />
+        <result column="commdity_price" property="commdityPrice" />
+        <result column="fc_price" property="fcPrice" />
+        <result column="commodity_amount" property="commodityAmount" />
+        <result column="commodity_leave_num" property="commodityLeaveNum" />
+        <result column="reg_time" property="regTime" />
+        <result column="image" property="image" />
+        <association property="commodityClass" javaType="com.psfd.springboot.eshop.domain.Commodityclass" column="commodity_class" select="getCommodityClass"  >
+            <id column="commodity_classId" property="commodityClassid" />
+            <result column="commodity_class_name" property="commodity_class_name" />
+        </association>
+    </resultMap>
+
+    <insert id="addCommodity">
+        INSERT INTO commodity ( commodity_name, commodity_class, manufacturer, commodity_depict, commodity_price, fc_price, commodity_amount, commodity_leave_num, reg_time, image )
+        VALUES ( #{commodityName},#{commodityClass.commodityClassid}, #{manufacturer}, #{commodityDepict}, #{commodityPrice},#{fcPrice}, #{commodityAmount}, #{commodityLeaveNum}, #{regTime}, #{image} )
+    </insert>
+
+    <select id="queryAllCommodity" resultMap="CommodityMap">
+        select * from commodity limit #{page},2
+    </select>
+
+    <select id="getCommodityClass" resultType="com.psfd.springboot.eshop.domain.Commodityclass">
+        select commodity_class_name from commodityclass where
+        commodity_classId=#{commodityClassid}
+    </select>
+
+</mapper>

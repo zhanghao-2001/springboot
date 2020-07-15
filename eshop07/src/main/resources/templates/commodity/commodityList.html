@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <LINK href="../css/Admin.css" rel=stylesheet>
+    <SCRIPT language=javascript src="../admin.js"></SCRIPT>
+</head>
+<STYLE type=text/css>
+    .STYLE1 {
+        FONT-WEIGHT: bold;
+        COLOR: #0099ff
+    }
+</STYLE>
+<BODY><BR>
+<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+<TABLE cellSpacing=1 cellPadding=3 width="95%" align=center bgColor=#6ab6b6
+       border=0>
+    <TBODY>
+    <TR>
+        <TH colSpan=10 height=24>【商品列表】</TH>
+    </TR>
+    <TR>
+        <TD class=forumrow>商品编号</TD>
+        <TD class=forumrow>商品名称</TD>
+        <TD class=forumrow>商品分类</TD>
+        <TD class=forumrow>生产厂家</TD>
+        <TD class=forumrow>商品价格</TD>
+        <TD class=forumrow>帆成网价格</TD>
+        <TD class=forumrow>商品总数量</TD>
+        <TD class=forumrow>商品剩余数量</TD>
+        <TD class=forumrow>商品上架时间</TD>
+        <TD class=forumrow>操作</TD>
+    </TR>
+    <TR th:each="commodityTemp:${commodityList}">
+        <TD class=forumrow th:text="${commodityTemp.commodityId}"></TD>
+        <TD class=forumrow th:text="${commodityTemp.commodityName}"></TD>
+        <TD class=forumrow th:text="${commodityTemp.commodityClass.commodityClassName}"></TD>
+        <TD class=forumrow th:text="${commodityTemp.manufacturer}"></TD>
+        <TD class=forumrow th:text="${commodityTemp.commodityPrice}"></TD>
+        <TD class=forumrow th:text="${commodityTemp.fcPrice}"></TD>
+        <TD class=forumrow th:text="${commodityTemp.commodityAmount}"></TD>
+        <TD class=forumrow th:text="${commodityTemp.commodityLeaveNum}"></TD>
+        <TD class=forumrow th:text="${#dates.format(commodityTemp.regTime,'yyyy-MM-dd')}">
+        </TD>
+        <TD class=forumrow><a th:href="@{deleteCommodity(commodityId=${commodityTemp.commodityId})}">删除</a></TD>
+    </TR>
+    <TR>
+        <TD class="forumrow" height=24 colspan="10" align="center">
+            <a th:href="@{commodityPage(page=1)}" id="first">首页</a>
+            <a th:href="@{commodityPage(page=${page}-1)}" id="prev">上一页</a>
+            <a th:href="@{commodityPage(page=${page}+1)}" id="next">下一页</a>
+            <a th:href="@{commodityPage(page=${pageCount})}" id="last">尾页</a>
+        </TD>
+    </TR>
+    </TBODY>
+</TABLE>
+<BR>
+<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+</BODY>
+</html>

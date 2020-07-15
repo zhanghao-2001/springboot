@@ -1,0 +1,131 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+    <LINK href="../css/Admin.css" rel=stylesheet>
+    <SCRIPT language=javascript src="../js/admin.js"></SCRIPT>
+</head>
+<STYLE type=text/css>
+    .STYLE1 {
+        FONT-WEIGHT: bold;
+        COLOR: #0099ff
+    }
+</STYLE>
+<BODY><BR>
+<TABLE class="tableborder" cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+<form action="addCommodity" method="post" enctype="multipart/form-data">
+    <TABLE cellSpacing=1 cellPadding=3 width="95%" align=center bgColor=#6ab6b6
+           border=0>
+        <TBODY>
+        <TR>
+            <TH colSpan=2 height=24>【新增商品】</TH>
+        </TR>
+        <TR>
+            <TD class=forumrow width="30%" height=24>
+                <div align="right">商品名称：</div>
+            </TD>
+            <TD class="forumrowhighlight" width="70%"
+                height=24><input type="text" name="commodityName" id="commodityName"></TD>
+        </TR>
+        <TR>
+            <TD class=forumrow height=24>
+                <div align="right">商品分类：</div>
+            </TD>
+            <TD class="forumrowhighlight"
+                height=24>
+                <select name="commodityClassID" id="commodityClassID">
+                    <option th:each="commodityclassTemp:${commodityclassList}"
+                            th:text="${commodityclassTemp.commodityClassName}" th:value="${commodityclassTemp.commodityClassid}"></option>
+                </select>
+            </TD>
+        </TR>
+        <TR>
+            <TD class="forumrow" height=24>
+                <div align="right">生产厂家：</div>
+            </TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="text" name="manufacturer" id="manufacturer"></TD>
+        </TR>
+        <TR>
+            <TD class="forumrow" height=24>
+                <div align="right">商品图片：</div>
+            </TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="file" name="uploadImage" id="uploadImage"></TD>
+        </TR>
+        <TR>
+            <TD class="forumrow" height=24>
+                <div align="right">商品描述：</div>
+            </TD>
+            <TD class="forumrowhighlight"
+                height=24><textarea name="commodityDepict" cols="50" rows="5" id="commodityDepict"></textarea></TD>
+        </TR>
+        <TR>
+            <TD class=forumrow height=24>
+                <div align="right">商品价格：</div>
+            <TD class="forumrowhighlight"
+                height=24><input type="number" name="commodityPrice" id="commodityPrice"></TD>
+        </TR>
+        <TR>
+            <TD class="forumrow" height=24>
+                <div align="right">帆成网价格：</div>
+            </TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="number" name="fcPrice" id="fcPrice"></TD>
+        </TR>
+        <TR>
+            <TD class="forumrow" height=24>
+                <div align="right">商品总数量：</div>
+            </TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="number" name="commodityAmount" id="commodityAmount"></TD>
+        </TR>
+        <TR>
+            <TD class="forumrow" height=24>&nbsp;</TD>
+            <TD class="forumrowhighlight"
+                height=24><input type="submit" value="提交" id="inputsubmit">
+                <input type="reset" value="重置"></TD>
+        </TR>
+        </TBODY>
+    </TABLE>
+</form>
+<BR>
+<TABLE class="tableborder" cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+</BODY>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+    // $("#inputsubmit").click(function () {
+    //     console.log($("#commodityClassID").val());
+    //     if (check()) {
+    //         $.post("addCommodity", {
+    //             "commodityName": $("#commodityName").val(),
+    //             "commodityClassID": $("#commodityClassID").val(),
+    //             "manufacturer": $("#manufacturer").val(),
+    //             "uploadImage": $("#uploadImage").val(),
+    //             "commodityDepict": $("#commodityDepict").val(),
+    //             "commodityPrice": $("#commodityPrice").val(),
+    //             "fcPrice": $("#fcPrice").val(),
+    //             "commodityAmount": $("#commodityAmount").val()
+    //         }, function (data) {
+    //             alert(data);
+    //         })
+    //     } else {
+    //         alert("有一项或多项输入为空");
+    //     }
+    // })
+
+    function check() {
+        if ($("#commodityName").val() != "" && $("#commodityClassID").val() != null && $("#manufacturer").val() != "" && $("#uploadImage").val() != "" && $("#fcPrice").val() != "" && $("#commodityAmount").val() != "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+</html>

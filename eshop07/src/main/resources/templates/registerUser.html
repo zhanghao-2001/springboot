@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="js/boxOver.js"></script>
+</head>
+<body>
+
+<div id="main_container">
+    <div class="top_bar"></div>
+    <div id="header">
+        <!-- end of oferte_content-->
+    </div>
+
+    <div id="main_content">
+
+        <div id="menu_tab">
+            <div class="left_menu_corner"></div>
+            <ul class="menu">
+                <li><a href="index" class="nav1">首页</a></li>
+                <li class="divider"></li>
+                <li><a href="#" class="nav2">在线购物</a></li>
+                <li class="divider"></li>
+                <li><a href="showCar" class="nav5">我的购物车</a></li>
+                <li class="divider"></li>
+                <li><a href="#" class="nav4">用户信息</a></li>
+                <li class="divider"></li>
+                <li><a href="login" class="nav3">用户登录</a></li>
+                <li class="divider"></li>
+                <li><a href="registerUser" class="nav6">用户注册 </a></li>
+                <li class="divider"></li>
+                <li></li>
+                <li class="divider"></li>
+            </ul>
+
+            <div class="right_menu_corner"></div>
+        </div><!-- end of menu tab -->
+
+        <div class="crumb_navigation">
+            导航: <span class="current">用户注册</span>
+
+        </div>
+
+
+        <div class="left_content">
+            <div class="title_box">商品分类</div>
+            <ul class="left_menu">
+                <li class="odd" th:each="commodityClassTemp:${commodityclassList}">
+                    <a th:href="@{queryCommodityClass(commodityClassid=${commodityClassTemp.commodityClassid})}"
+                       th:text="${commodityClassTemp.commodityClassName}">
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div>
+            <form action="addUser" method="post" style="position: relative;left:100px" onsubmit="return check()">
+                <table>
+                    <tr>
+                        <td>用户名：</td>
+                        <td><input name="username" id="username"></td>
+                    </tr>
+                    <tr>
+                        <td>密码:</td>
+                        <td><input name="password" id="password"></td>
+                    </tr>
+                    <tr>
+                        <td>姓名：</td>
+                        <td><input name="name" id="name"></td>
+                    </tr>
+                    <tr>
+                        <td>性别:</td>
+                        <td>
+                            <input name="sex" type="radio" class="sex" value="男">男
+                            <input name="sex" type="radio" class="sex" value="女">女
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 住址:</td>
+                        <td><input name="address" id="address"></td>
+                    </tr>
+                    <tr>
+                        <td> 联系电话：</td>
+                        <td><input name="phone" id="phone" maxlength="11" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td> 邮寄地址：</td>
+                        <td><input name="post" id="post"></td>
+                    </tr>
+                    <tr>
+                        <td> Email:</td>
+                        <td><input name="email" id="email"></td>
+                    </tr>
+                    <tr>
+                        <td> IP地址：</td>
+                        <td><input name="regIpAddress" id="regIpAddress"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="提交"></td>
+                        <td><input type="reset"></td>
+                    </tr>
+
+                </table>
+            </form>
+
+        </div>
+
+    </div><!-- end of main content -->
+
+
+    <div class="footer"></div>
+
+
+</div>
+</body>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    function check() {
+        if ($("#username").val() != "" && $("#password").val() != "" && $("#name").val() != "" && $(".sex").val() != "" && $("#address").val() != "" &&
+            $("#phone").val() != "" && $("#post").val() != "" && $("#email").val() != "" && $("#regTime").val() != "" && $("#regIpAddress").val() != "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+</html>

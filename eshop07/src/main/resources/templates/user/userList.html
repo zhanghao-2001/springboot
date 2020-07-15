@@ -1,0 +1,58 @@
+<HTML lang="en" xmlns:th="http://www.thymeleaf.org">
+<HEAD><TITLE>欢迎进入系统后台</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=UTF-8">
+    <LINK
+            href="../css/Admin.css" rel=stylesheet>
+    <SCRIPT language=javascript src="../js/admin.js"></SCRIPT>
+
+    <STYLE type=text/css>
+        .STYLE1 {
+            FONT-WEIGHT: bold;
+            COLOR: #0099ff
+        }
+    </STYLE>
+</HEAD>
+<BODY><BR>
+<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+<TABLE cellSpacing=1 cellPadding=3 width="95%" align=center bgColor=#6ab6b6
+       border=0>
+    <TBODY>
+    <TR>
+        <TH colSpan=9 height=24>【用户列表】
+        </TD>
+    </TR>
+    <TR>
+        <TD class=forumrow>用户编号</TD>
+        <TD class=forumrow>用户名</TD>
+        <TD class=forumrow>密码</TD>
+        <TD class=forumrow>姓名</TD>
+        <TD class=forumrow>性别</TD>
+        <TD class=forumrow>住址</TD>
+        <TD class=forumrow>联系电话</TD>
+        <TD class=forumrow>邮寄地址</TD>
+        <TD class=forumrow>操作</TD>
+    </TR>
+
+    <tr th:each="userTemp:${userList}">
+        <TD class="forumrow" th:text="${userTemp.userId}"></TD>
+        <TD class="forumrow" th:text="${userTemp.username}"></TD>
+        <TD class="forumrow" th:text="${userTemp.password}"></TD>
+        <TD class="forumrow" th:text="${userTemp.name}"></TD>
+        <TD class="forumrow" th:text="${userTemp.sex==1?'男':'女'}"></TD>
+        <TD class="forumrow" th:text="${userTemp.address}"></TD>
+        <TD class="forumrow" th:text="${userTemp.phone}"></TD>
+        <TD class="forumrow" th:text="${userTemp.post}"></TD>
+        <TD class="forumrow">删除</TD>
+    </tr>
+    </TBODY>
+</TABLE>
+<BR>
+<TABLE class=tableborder cellSpacing=1 cellPadding=3 width="95%" align=center
+       border=0>
+</TABLE>
+<BR>
+</BODY>
+</HTML>

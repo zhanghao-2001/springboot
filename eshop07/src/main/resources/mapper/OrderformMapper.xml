@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.psfd.springboot.eshop.dao.OrderformMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="OrderFormMap" type="com.psfd.springboot.eshop.domain.Orderform">
+        <id column="order_form_id" property="orderFormId"/>
+        <result column="order_from_no" property="orderFromNo"/>
+        <result column="submit_time" property="submitTime"/>
+        <result column="consignment_time" property="consignmentTime"/>
+        <result column="total_price" property="totalPrice"/>
+        <result column="remark" property="remark"/>
+        <result column="ipaddress" property="ipaddress"/>
+        <result column="is_payoff" property="isPayoff"/>
+        <result column="isConsignment" property="isConsignment"/>
+        <association property="user" column="user_id" select="getUser"
+                     javaType="com.psfd.springboot.eshop.domain.User">
+        </association>
+    </resultMap>
+
+    <insert id="addOrderForm" useGeneratedKeys="true" keyProperty="orderFormId">
+        insert into orderform(user_id,order_from_no,submit_time,consignment_time,
+        total_price,remark,ipaddress,is_payoff,isConsignment)
+        value(#{user.userId},#{orderFromNo},#{submitTime},#{consignmentTime},#{totalPrice},#{remark},#{ipaddress},#{isPayoff},#{isConsignment})
+
+    </insert>
+    <select id="queryAllOrderForm" resultMap="OrderFormMap">
+        select * from orderform
+    </select>
+
+    <select id="getUser" resultType="com.psfd.springboot.eshop.domain.User">
+        select * from user where user_id=#{userId}
+    </select>
+
+
+
+
+
+</mapper>

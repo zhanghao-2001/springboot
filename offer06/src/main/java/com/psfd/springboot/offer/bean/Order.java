@@ -9,11 +9,12 @@ import java.sql.Date;
 
 @TableName("tb_order")
 public class Order {
+
     @TableId(type = IdType.AUTO)
     private Integer orderNo;//订单编号
     private Integer customerNo;//下单客户编号
     private Integer productNo;//下单产品编号
-    private Date oderTime;//下单时间
+    private Date orderTime;//下单时间
     private Integer quantity;//产品数量
     private String otherInfo;//订单其他信息
 
@@ -41,12 +42,12 @@ public class Order {
         this.productNo = productNo;
     }
 
-    public Date getOderTime() {
-        return oderTime;
+    public Date getOrderTime() {
+        return orderTime;
     }
 
-    public void setOderTime(Date oderTime) {
-        this.oderTime = oderTime;
+    public void setOrderTime(Date orderTime) {
+        this.orderTime = orderTime;
     }
 
     public Integer getQuantity() {
@@ -71,7 +72,7 @@ public class Order {
                 "orderNo=" + orderNo +
                 ", customerNo=" + customerNo +
                 ", productNo=" + productNo +
-                ", oderTime=" + oderTime +
+                ", orderTime=" + orderTime +
                 ", quantity=" + quantity +
                 ", otherInfo='" + otherInfo + '\'' +
                 '}';

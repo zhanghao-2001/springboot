@@ -5,4 +5,5 @@ import com.psfd.springboot.offer.bean.User;
 
 
 public interface IUserService extends IService<User> {
+
 }

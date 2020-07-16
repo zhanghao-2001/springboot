@@ -12,8 +12,8 @@ public class Quotation {
 
     @TableId(type = IdType.AUTO)
     private Integer quotationNo;//报价编号
-    private Integer customerNo;//报价客户编号
-    private Integer productNo;//报价产品编号
+    private Integer customerId;//报价客户编号
+    private Integer productId;//报价产品编号
     private String quotationMan;//报价人
     private Date quotationTime;//报价时间
     private String otherInfo;//报价其他信息
@@ -26,20 +26,20 @@ public class Quotation {
         this.quotationNo = quotationNo;
     }
 
-    public Integer getCustomerNo() {
-        return customerNo;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomerNo(Integer customerNo) {
-        this.customerNo = customerNo;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public Integer getProductNo() {
-        return productNo;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProductNo(Integer productNo) {
-        this.productNo = productNo;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getQuotationMan() {
@@ -70,8 +70,8 @@ public class Quotation {
     public String toString() {
         return "Quotation{" +
                 "quotationNo=" + quotationNo +
-                ", customerNo=" + customerNo +
-                ", productNo=" + productNo +
+                ", customerId=" + customerId +
+                ", productId=" + productId +
                 ", quotationMan='" + quotationMan + '\'' +
                 ", quotationTime=" + quotationTime +
                 ", otherInfo='" + otherInfo + '\'' +

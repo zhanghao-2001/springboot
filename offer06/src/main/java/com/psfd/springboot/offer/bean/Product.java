@@ -9,54 +9,54 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class Product {
 
     @TableId(type = IdType.AUTO)
-    private Integer productNo;//产品编号
-    private Integer productTypeNo;//产品所属类型编号
-    private String productName;//产品名称
-    private String producingArea;//产品所在区域
-    private String productOwner;//产品所有者
+    private Integer productid;//产品编号
+    private Integer typeid;//产品所属类型编号
+    private String name;//产品名称
+    private String area;//产品所在区域
+    private String owner;//产品所有者
     private String unit;//产品单位
-    private Byte price;//产品价格
+    private Integer price;//产品价格
     private Integer quantity;//产品数量
-    private String otherInfo;//产品其他信息
+    private String otherinfo;//产品其他信息
 
-    public Integer getProductNo() {
-        return productNo;
+    public Integer getProductid() {
+        return productid;
     }
 
-    public void setProductNo(Integer productNo) {
-        this.productNo = productNo;
+    public void setProductid(Integer productid) {
+        this.productid = productid;
     }
 
-    public Integer getProductTypeNo() {
-        return productTypeNo;
+    public Integer getTypeid() {
+        return typeid;
     }
 
-    public void setProductTypeNo(Integer productTypeNo) {
-        this.productTypeNo = productTypeNo;
+    public void setTypeid(Integer typeid) {
+        this.typeid = typeid;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getProducingArea() {
-        return producingArea;
+    public String getArea() {
+        return area;
     }
 
-    public void setProducingArea(String producingArea) {
-        this.producingArea = producingArea;
+    public void setArea(String area) {
+        this.area = area;
     }
 
-    public String getProductOwner() {
-        return productOwner;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setProductOwner(String productOwner) {
-        this.productOwner = productOwner;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public String getUnit() {
@@ -67,11 +67,11 @@ public class Product {
         this.unit = unit;
     }
 
-    public Byte getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Byte price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -83,26 +83,26 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getOtherInfo() {
-        return otherInfo;
+    public String getOtherinfo() {
+        return otherinfo;
     }
 
-    public void setOtherInfo(String otherInfo) {
-        this.otherInfo = otherInfo;
+    public void setOtherinfo(String otherinfo) {
+        this.otherinfo = otherinfo;
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "productNo=" + productNo +
-                ", productTypeNo=" + productTypeNo +
-                ", productName='" + productName + '\'' +
-                ", producingArea='" + producingArea + '\'' +
-                ", productOwner='" + productOwner + '\'' +
+                "productid=" + productid +
+                ", typeid=" + typeid +
+                ", name='" + name + '\'' +
+                ", area='" + area + '\'' +
+                ", owner='" + owner + '\'' +
                 ", unit='" + unit + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
-                ", otherInfo='" + otherInfo + '\'' +
+                ", otherInfo='" + otherinfo + '\'' +
                 '}';
     }
 }

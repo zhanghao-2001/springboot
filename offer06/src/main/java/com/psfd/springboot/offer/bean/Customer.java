@@ -9,27 +9,27 @@ import com.baomidou.mybatisplus.annotation.TableName;
 public class Customer {
 
     @TableId(type = IdType.AUTO)
-    private Integer customerNo;//客户编号
-    private String customerName;//客户名称
+    private Integer id;//客户编号
+    private String name;//客户名称
     private String phone;//联系电话
     private String address;//联系地址
     private String relationman;//联系人
-    private String otherInfo;//客户其他信息
+    private String otherinfo;//客户其他信息
 
-    public Integer getCustomerNo() {
-        return customerNo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCustomerNo(Integer customerNo) {
-        this.customerNo = customerNo;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getName() {
+        return name;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -56,23 +56,23 @@ public class Customer {
         this.relationman = relationman;
     }
 
-    public String getOtherInfo() {
-        return otherInfo;
+    public String getOtherinfo() {
+        return otherinfo;
     }
 
-    public void setOtherInfo(String otherInfo) {
-        this.otherInfo = otherInfo;
+    public void setOtherinfo(String otherinfo) {
+        this.otherinfo = otherinfo;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "customerNo=" + customerNo +
-                ", customerName='" + customerName + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", relationman='" + relationman + '\'' +
-                ", otherInfo='" + otherInfo + '\'' +
+                ", otherinfo='" + otherinfo + '\'' +
                 '}';
     }
 }

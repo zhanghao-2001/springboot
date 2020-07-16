@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/oa.css}" rel="stylesheet" type="text/css">
+    <script language="javascript" th:src="@{/js/public.js}"></script>
+    <title>查询报价信息</title>
+</head>
+<body>
+<center>
+    <form action="quotationQueryRegister.do" method="post">
+        <input type="hidden" name="query" value="true">
+        <center>
+            <TABLE width="778" border=0 cellPadding=0 cellSpacing=0 borderColor=#ffffff bgColor=#dee7ff
+                   style="FONT-SIZE: 10pt">
+                <TBODY>
+                <TR height=35>
+
+                    <TD align=middle width=120 th:background="@{/images/title_left.gif}"
+                        bgColor=#dee7ff><FONT color=#f7f7f7>报价查询<font color="#FFFFFF">&nbsp;</font></FONT></TD>
+                </TR>
+                </TBODY>
+            </TABLE>
+        </center>
+        <TABLE width="778" border=0 align=center cellPadding=0 cellSpacing=0 borderColor=#ffffff
+               style="FONT-SIZE: 10pt">
+            <TBODY>
+            <TR>
+                <TD width="82%" height=14 align=right vAlign=center noWrap>
+                </TD>
+                <TD width="18%" align=right vAlign=center noWrap>　</TD>
+            </TR>
+            <TR>
+                <TD height=14 align=right vAlign=center noWrap>
+                    <!-- 在这里插入查询表单 -->
+                </TD>
+            </TR>
+            <TR>
+                <TD height=28 colspan="2" align=right vAlign=center noWrap th:background="@{/images/list_middle.jpg}">
+                    &nbsp;&nbsp;
+                    <!-- 可以在这里插入分页导航条 -->
+                </TD>
+            </TR>
+            </TBODY>
+        </TABLE>
+        <TABLE class="tableEdit" border="0" cellspacing="1" cellpadding="0" style="width:580px;">
+            <TBODY>
+            <TR>
+                <td>
+                    <!-- 主输入域开始 -->
+                    <table class="tableEdit" style="width:778px;" cellspacing="0" border="0" cellpadding="0">
+                        <tr>
+                            <td class="tdEditLabel">订单编号</td>
+                            <td class="tdEditContent"><input type="text" name="quotationNO">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEditLabel">客户名称</td>
+                            <td class="tdEditContent">
+                                <select name="customerId" data-placeholder="请选择客户名称">
+                                    <option label='请选择客户名称'></option>
+                                    <option th:each="list : ${customer}" th:value="${list.getId()}"
+                                            th:text="${list.getName()}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEditLabel">产品名称</td>
+                            <td class="tdEditContent">
+                                <select name="productId" data-placeholder="请选择产品名称">
+                                    <option label='请选择产品名称'></option>
+                                    <option th:each="list : ${product}" th:value="${list.getProductid()}"
+                                            th:text="${list.getName()}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEditLabel">报价人</td>
+                            <td class="tdEditContent"><input type="text" name="quotationMan"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdEditLabel">其他信息</td>
+                            <td class="tdEditContent" colspan="3"><input type="text" name="otherInfo"></td>
+                        </tr>
+                    </table>
+                    <!-- 主输入域结束 -->
+                </td>
+            </TR>
+            </TBODY>
+        </TABLE>
+
+        <TABLE>
+            <TR align="center">
+                <TD colspan="3" bgcolor="#EFF3F7">
+                    <input type="submit" name="saveButton"
+                           class="MyButton" value="查询报价信息">
+                </TD>
+            </TR>
+        </TABLE>
+        <TABLE width="778" border=0 align=center cellPadding=0 cellSpacing=0 borderColor=#ffffff
+               style="FONT-SIZE: 10pt">
+            <TBODY>
+            <TR>
+                <TD height=28 align=right vAlign=center noWrap background="<%=basePath%>images/list_middle.jpg">&nbsp;&nbsp;
+                </TD>
+            </TR>
+            </TBODY>
+        </TABLE>
+    </form>
+</center>
+</body>
+</html>

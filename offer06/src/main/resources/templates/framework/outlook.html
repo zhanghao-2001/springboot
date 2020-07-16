@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <title>导航栏</title>
+
+</head>
+<link th:href="@{/css/css.css}" rel="stylesheet" type="text/css"/>
+<script th:src="@{/js/left.js}"></script>
+<body id="leftId">
+<table width="198" border="0" cellpadding="0" cellspacing="0" class="left-table01">
+    <tr>
+        <TD>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="207" height="55" th:background="@{/images/nav01.gif}">
+                        <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="25%" rowspan="2"><img th:src="@{/images/ico02.gif}" width="35"
+                                                                 height="35"/></td>
+                                <td width="75%" height="22" class="left-font01">您好，<span
+                                        class="left-font02" th:text="${session.username}"></span></td>
+                            </tr>
+                            <tr>
+                                <td height="22" class="left-font01">
+                                    [&nbsp;<a href="../framework/welcome.jsp" target="_top"
+                                              class="left-font01">退出</a>&nbsp;]
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+
+            <!--  任务系统开始    -->
+            <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03" th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
+                <tr>
+                    <td height="29">
+                        <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="8%"><img name="img8" id="img8" th:src="@{/images/ico04.gif}" width="8"
+                                                    height="11"/></td>
+                                <td width="92%">
+                                    <a href="javascript:" target="main" class="left-font03"
+                                       onClick="list('8');">客户</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </TABLE>
+            <table id="subtree8" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
+                   cellspacing="0" class="left-table02" th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
+                <tr>
+                    <td width="9%" height="20"><img id="xiaotu1" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%"><a href="customerlist.do?current=1" target="main" class="left-font03"
+                                       onClick="tupian('1');">客户管理</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="9%" height="21"><img id="xiaotu2" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%"><a href="customerQuery.do" target="main" class="left-font03"
+                                       onClick="tupian('2');">查询客户</a></td>
+                </tr>
+            </table>
+            <!--  任务系统结束    -->
+
+
+            <!--  消息系统开始    -->
+            <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03">
+                <tr>
+                    <td height="29">
+                        <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="8%"><img name="img7" id="img7" th:src="@{/images/ico04.gif}" width="8"
+                                                    height="11"/></td>
+                                <td width="92%">
+                                    <a href="javascript:" target="main" class="left-font03"
+                                       onClick="list('7');">产品</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </TABLE>
+            <table id="subtree7" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
+                   cellspacing="0" class="left-table02">
+                <tr  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
+                    <td width="9%" height="20"><img id="xiaotu3" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%">
+                        <a href="productTypeListSkip.do?current=1" target="main" class="left-font03" onClick="tupian('3');">产品类别管理</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="9%" height="20"><img id="xiaotu4" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%">
+                        <a href="productTypeManage.do" target="main" class="left-font03"
+                           onClick="tupian('4');">产品类别查询</a>
+                    </td>
+                </tr>
+                <tr  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
+                    <td width="9%" height="20"><img id="xiaotu5" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%">
+                        <a href="productList.do?current=1" target="main" class="left-font03"
+                           onClick="tupian('5');">产品管理
+                        </a></td>
+                </tr>
+                <tr>
+                    <td width="9%" height="20"><img id="xiaotu6" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%">
+                        <a href="productQuerySkip.do" target="main" class="left-font03"
+                           onClick="tupian('6');">产品查询
+                        </a></td>
+                </tr>
+
+            </table>
+            <!--  消息系统结束    -->
+
+
+            <TABLE width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03"  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
+                <tr>
+                    <td height="29">
+                        <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="8%"><img name="img1" id="img1" th:src="@{/images/ico04.gif}" width="8"
+                                                    height="11"/></td>
+                                <td width="92%">
+                                    <a href="javascript:" target="main" class="left-font03"
+                                       onClick="list('1');">订单</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </TABLE>
+            <table id="subtree1" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
+                   cellspacing="0" class="left-table02"  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
+                <tr>
+                    <td width="9%" height="20"><img id="xiaotu7" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%"><a href="orderList.do?current=1" target="main" class="left-font03"
+                                       onClick="tupian('7');">订单管理</a></td>
+                </tr>
+                <tr>
+                    <td width="9%" height="20"><img id="xiaotu8" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%"><a href="orderQuerySkip.do" target="main" class="left-font03"
+                                       onClick="tupian('8');">订单查询</a></td>
+                </tr>
+            </table>
+            <!--  项目系统结束    -->
+
+            <!--  客户系统开始    -->
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03">
+                <tr>
+                    <td height="29">
+                        <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="8%" height="12"><img name="img2" id="img2" th:src="@{/images/ico04.gif}"
+                                                                width="8" height="11"/></td>
+                                <td width="92%"><a href="javascript:" target="main" class="left-font03"
+                                                   onClick="list('2');">报价</a></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table id="subtree2" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
+                   cellspacing="0" class="left-table02">
+                <tr  th:if="${session.grade} eq 'admin' or ${session.grade} eq 'staff'">
+                    <td width="9%" height="20"><img id="xiaotu9" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%"><a href="quotationList.do?current=1" target="main" class="left-font03"
+                                       onClick="tupian('9');">报价管理</a></td>
+                </tr>
+                <tr>
+                    <td width="9%" height="20"><img id="xiaotu10" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%"><a href="quotationQuery.do" target="main"
+                                       class="left-font03" onClick="tupian('10');">报价查询</a></td>
+                </tr>
+            </table>
+
+            <!--  客户系统结束    -->
+
+            <!--  人员系统开始    -->
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03" th:if="${session.grade} eq 'admin'">
+                <tr>
+                    <td height="29">
+                        <table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="8%" height="12"><img name="img3" id="img3" th:src="@{/images/ico04.gif}"
+                                                                width="8" height="11"/></td>
+                                <td width="92%"><a href="javascript:" target="main" class="left-font03"
+                                                   onClick="list('3');">用户</a></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <table id="subtree3" style="DISPLAY: none" width="80%" border="0" align="center" cellpadding="0"
+                   cellspacing="0" class="left-table02"  th:if="${session.grade} eq 'admin'">
+                <tr>
+                    <td width="9%" height="20"><img id="xiaotu11" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%"><a href="userList.do?current=1" target="main" class="left-font03"
+                                       onClick="tupian('11');">用户管理</a></td>
+                </tr>
+                <tr>
+                    <td width="9%" height="20"><img id="xiaotu12" th:src="@{/images/ico06.gif}" width="8"
+                                                    height="12"/></td>
+                    <td width="91%"><a href="userQuerySkip.do" target="main" class="left-font03"
+                                       onClick="tupian('12');">用户查询</a></td>
+                </tr>
+            </table>
+
+            <!--  人员系统结束    -->
+        </TD>
+    </tr>
+
+</table>
+</div>
+
+
+</body>
+</html>
